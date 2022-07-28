@@ -1,0 +1,132 @@
+laravel---install
+
+https://github.com/laravel/ui
+composer create-project laravel/laravel: pro-name
+cd  pro-name
+php artisan serve
+
+
+			#### https://github.com/laravel/ui
+composer require laravel/ui
+php artisan ui bootstrap --auth
+@@@@ node v-update
+
+npm install && npm run dev
+
+npm install
+npm run dev
+
+or
+npm run watch
+or
+npm config rm proxy
+or
+npm config rm https-proxy
+php artisan ui vue --auth
+
+		# packege list
+
+https://packalyst in laravel
+
+		# Image upload Pakege
+https://intervention laravel
+
+		# view create....
+https://github.com/svenluijten/artisan-view
+
+		#using select 2
+https://select2.org/getting-started/installation
+
+		# Bangladesh district...upojela..union.. connect
+https://github.com/nuhil/bangladesh-geocode
+
+		# laravel validation error messages with ajax
+https://codingdriver.com/laravel-8-validation-errors-with-ajax-request.html
+
+		## number convert to word____video_61-5_ 1.h_ 10.min
+https://github.com/riskihajar/terbilang
+
+		## laravel pdf packege____video_61-5__ 10.min
+https://github.com/barryvdh/laravel-dompdf
+
+		## photo upload site
+https://image.intervention.io/v2/introduction/installation
+
+
+
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+
+	# create view
+$ composer require sven/artisan-view --dev
+
+		# create ressorsfull Conroller
+php artisan make:model name  -mcr
+
+		# add table fields
+php artisan make:migration add_fields_at_subdivision --table=subdivision
+
+php artisan serve --port=8001
+		# model create
+php artisan make:model moel_Name -m
+		# Controller create
+php artisan make:Controller NameController
+		
+
+		# seeder create
+php artisan make:seeder seeder name
+		# run seeder	
+php artisan db:seed
+
+		## middleware
+php artisan make:middleware middleware_name
+
+
+
+
+###########################################################################################
+
+automitacally logout----video-no:.58... 24..min
+all country added----video-no:.61... 40..min
+item remove $ add --- video:..61-1..47..min
+## chart added____video_61-6__ 15.min
+## cron job auto kaj hobe__ 61-8__15.min
+# Api details __ 61-10__45.min
+# edite upadate details __ 39__30.min
+# restore code details __ 46__55.min
+# discount price & regular price details __ 49__15.min
+# Ajax details __ 49__20.min
+# Soft delete __ 42__10.min
+
+slider section.. recycle bin
+
+
+
+
+
+
+
+
+
+
+
+
+.htaccess code
+
+<IfModule mod_rewrite.c>
+  RewriteEngine on
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
+
+
+
+
+
+
+
+
+
+
+
