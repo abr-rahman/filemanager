@@ -39,3 +39,5 @@ Route::get('/photo', [FolderController::class, 'photofolder'])->name('photo.fold
 Route::get('/video', [FolderController::class, 'videofolder'])->name('video.folder');
 Route::get('/odio', [FolderController::class, 'odiofolder'])->name('odio.folder');
 Route::get('/document', [FolderController::class, 'documentfolder'])->name('document.folder');
+
+Route::get('/testmultipleedit', [FolderController::class, 'testmultipleedit'])->name('multiple.edit');

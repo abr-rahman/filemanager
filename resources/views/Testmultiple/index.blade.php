@@ -17,9 +17,6 @@
                 <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">File Manager</li>
-                <div class="alert alert-success">
-                    <p>dsfasdkjfasdklj</p>
-                </div>
             </ol>
         </nav>
     </div>
@@ -175,17 +172,16 @@
                                 <td>
                                     <div class="d-flex align-items-center">
                                         <div><i class='bx bxs-file-pdf me-2 font-24 text-success'></i></div>
-                                        <a href=" {{ substr(URL::asset("files/$testmulti->filename"), 7, 15) }}" class="font-weight-bold text-dark"  target="_blank">{{ $testmulti->filename }}</a>
+                                        <a href=" {{ substr(URL::asset("files/$testmulti->filename"), 7, 10) }}" class="font-weight-bold text-dark"  target="_blank">{{ $testmulti->filename }}</a>
                                     </div>
                                 </td>
                                 <td>{{ $testmulti->created_at }}</td>
                                 <td>
                                     <select name="" id="" class="form-control">
                                         <option value="">Action</option>
-                                        <option class="text-success" value="">Edit</option>
-                                        <option value="" class="text-danger">Delete</option>
+                                        <option class="text-success"><a href="{{ route('multiple.edit') }}">Edit</a></option>
+                                        <option class="text-danger">Delete</option>
                                     </select>
-
                                 </td>
                             </tr>
                             @endforeach

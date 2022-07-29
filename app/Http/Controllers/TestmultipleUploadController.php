@@ -123,7 +123,7 @@ class TestmultipleUploadController extends Controller
      */
     public function edit(TestmultipleUpload $testmultipleUpload)
     {
-
+        return ('hi');
     }
 
     /**

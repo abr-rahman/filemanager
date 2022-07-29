@@ -92,4 +92,8 @@ class FolderController extends Controller
         return view('Testmultiple.documents', compact('documents'));
     }
 
+    public function testmultipleedit(){
+        return ('hi');
+    }
+
 }
