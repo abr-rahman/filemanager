@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\TestmultipleUpload;
+use Illuminate\Support\Facades\File;
 
 class FolderController extends Controller
 {
@@ -92,8 +93,21 @@ class FolderController extends Controller
         return view('Testmultiple.documents', compact('documents'));
     }
 
-    public function testmultipleedit(){
-        return ('hi');
-    }
+    public function folderstore(Request $request){
 
+        // return $request->folder_create;
+        // File::mkdir(public_path() . '/folder');
+
+        // File::makeDirectory(public_path(). 'new-folder');
+
+        $result = file_exists(public_path('hello-world')) ?: File::makeDirectory('hello-world');
+        $all =  scandir(public_path());
+
+        $onlyFolders =  array_filter($all, function($item) {
+            return is_dir($item) && !in_array($item, ['.', '..']);
+        });
+
+        // return $onlyFolders;
+        return view('Testmultiple.index', compact('onlyFolders'));
+    }
 }

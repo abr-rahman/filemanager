@@ -17,7 +17,7 @@ class TestmultipleUploadController extends Controller
      */
     public function index()
     {
-        $testmultiple = TestmultipleUpload::all();
+        $testmultiples = TestmultipleUpload::all();
 
 
         // $count = TestmultipleUpload::where('id', $id);
@@ -27,7 +27,7 @@ class TestmultipleUploadController extends Controller
         $images = [];
         $documents = [];
 
-        foreach($testmultiple as $item)
+        foreach($testmultiples as $item)
         {
             $fileName = $item->filename;
 
@@ -61,7 +61,7 @@ class TestmultipleUploadController extends Controller
         $audios = count($audios);
         $documents = count($documents);
 
-        return view('Testmultiple.index', compact('testmultiple', 'audios', 'videos', 'images', 'documents', 'picture'));
+        return view('Testmultiple.index', compact('testmultiples', 'audios', 'videos', 'images', 'documents', 'picture'));
     }
 
     /**
@@ -123,7 +123,8 @@ class TestmultipleUploadController extends Controller
      */
     public function edit(TestmultipleUpload $testmultipleUpload)
     {
-        return ('hi');
+        $testmultiples = TestmultipleUpload::all();
+        return view('Testmultiple.edit', compact('testmultiples'));
     }
 
     /**
@@ -135,7 +136,7 @@ class TestmultipleUploadController extends Controller
      */
     public function update(Request $request, TestmultipleUpload $testmultipleUpload)
     {
-        //
+        return ('hi');
     }
 
     /**
@@ -149,8 +150,8 @@ class TestmultipleUploadController extends Controller
         //
     }
 
-    public function folderstore(Request $request)
-    {
-        return ('hi');
-    }
+    // public function multipleedit($id)
+    // {
+    //     return ('hi');
+    // }
 }

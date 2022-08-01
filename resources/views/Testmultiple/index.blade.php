@@ -27,12 +27,17 @@
     <div class="col-12 col-lg-3">
         <div class="card">
             <div class="card-body">
-                {{-- <div class="d-grid"> <a href="javascript:;" class="btn btn-primary">+ Add File</a>
-                </div> --}}
-                {{-- <form action="{{ route('folder.store') }}" method="post">
-                        <input type="text" class="form-control" value="">
-                    <button type="submit" class="btn btn-primary"> add</button>
-                </form> --}}
+                <form action="{{ route('folder.store') }}" method="post">
+                    @csrf
+                    <div class="row">
+                        <div class="col-7">
+                            <input type="text" class="form-control" name="folder_create" placeholder="Create File">
+                        </div>
+                        <div class="col-2">
+                            <button type="submit" class="btn btn-primary"> add</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
         <div class="card">
@@ -68,6 +73,17 @@
                     </div>
                     <h6 class="text-primary mb-0">256 MB</h6>
                 </div>
+                @foreach ($onlyFolders as $onlyFolde)
+                    <div class="d-flex align-items-center mt-3">
+                        <div class="flex-grow-1 ms-2">
+                                <h6 class="mb-0">Folder</h6>
+                                <p class="mb-0 text-secondary"></p>
+                        </div>
+                        <h6 class="text-primary mb-0">256 MB</h6>
+                    </div>
+                @endforeach
+
+
                 <div class="d-flex align-items-center mt-3">
                     <div class="fm-file-box bg-light-danger text-danger"><i class='bx bx-video'></i>
                     </div>
@@ -167,7 +183,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($testmultiple as $testmulti)
+                            @foreach ($testmultiples as $testmulti)
                             <tr>
                                 <td>
                                     <div class="d-flex align-items-center">
@@ -177,11 +193,7 @@
                                 </td>
                                 <td>{{ $testmulti->created_at }}</td>
                                 <td>
-                                    <select name="" id="" class="form-control">
-                                        <option value="">Action</option>
-                                        <option class="text-success"><a href="{{ route('multiple.edit') }}">Edit</a></option>
-                                        <option class="text-danger">Delete</option>
-                                    </select>
+                                    <a href="{{ route('testmultiple.edit', $testmulti->id) }}" type="button" class="btn btn-primary m-1" style="padding: 10px;"><i class="lni lni-syringe"></i></a>
                                 </td>
                             </tr>
                             @endforeach

@@ -74,6 +74,29 @@
 	</div>
 	<!--start switcher-->
 
+
+    <!-- JavaScript -->
+	<!-- Bootstrap JS -->
+	<script src="{{ asset('dashboard')}}/assets/js/bootstrap.bundle.min.js"></script>
+
+	<!--plugins-->
+	<script src="{{ asset('dashboard')}}/assets/js/jquery.min.js"></script>
+	<script src="{{ asset('dashboard')}}/assets/plugins/simplebar/js/simplebar.min.js"></script>
+	<script src="{{ asset('dashboard')}}/assets/plugins/metismenu/js/metisMenu.min.js"></script>
+	<script src="{{ asset('dashboard')}}/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
+	<!-- Vector map JavaScript -->
+	<script src="{{ asset('dashboard')}}/assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js"></script>
+	<script src="{{ asset('dashboard')}}/assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js"></script>
+	<script src="{{ asset('dashboard')}}/assets/plugins/vectormap/jquery-jvectormap-in-mill.js"></script>
+	<script src="{{ asset('dashboard')}}/assets/plugins/vectormap/jquery-jvectormap-us-aea-en.js"></script>
+	<script src="{{ asset('dashboard')}}/assets/plugins/vectormap/jquery-jvectormap-uk-mill-en.js"></script>
+	<script src="{{ asset('dashboard')}}/assets/plugins/vectormap/jquery-jvectormap-au-mill.js"></script>
+	<script src="{{ asset('dashboard')}}/assets/plugins/apexcharts-bundle/js/apexcharts.min.js"></script>
+	<script src="{{ asset('dashboard')}}/assets/js/index2.js"></script>
+	<!-- App JS -->
+	<script src="{{ asset('dashboard')}}/assets/js/app.js"></script>
+
+
     @yield('footer_script')
 
 	<script src="//unpkg.com/alpinejs" defer></script>
