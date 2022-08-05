@@ -113,7 +113,7 @@ box-shadow: 0 3px 0 0 deeppink;
 
               <div class="frame">
                 <div class="center">
-                    <form method="post" action="{{  route('testmultiple.update', $testmultiples->id) }}" enctype="multipart/form-data">
+                    <form action="{{  route('testmultiple.update', $testmultiples->id) }}" enctype="multipart/form-data">
                         @csrf
                         <div class="dropzone upload-icon">
                             <img src="http://100dayscss.com/codepen/upload.svg" class="upload-icon" />

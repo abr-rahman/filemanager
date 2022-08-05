@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TestmultipleUpload;
 use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\TestmultipleUpload;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Intervention\Image\Facades\Image;
 use Illuminate\Validation\Rules\Unique;
 
 class TestmultipleUploadController extends Controller
@@ -89,12 +92,8 @@ class TestmultipleUploadController extends Controller
         $upload = $request->file('filename');
 
         if ($request->hasfile('filename')) {
-
-            // $name = uniqid().'.' .$upload->getClientOriginalName();
             $name = $upload->getClientOriginalName();
-
             $upload->move(public_path() . '/files', $name);
-
             $file = new TestmultipleUpload();
             $file->filename = $name;
             $file->save();
@@ -110,9 +109,34 @@ class TestmultipleUploadController extends Controller
      * @param  \App\Models\TestmultipleUpload  $testmultipleUpload
      * @return \Illuminate\Http\Response
      */
-    public function show(TestmultipleUpload $testmultipleUpload)
+    public function show(Request $request)
     {
-        return "HI";
+        // return $request->filename;
+        // $this->validate($request, [
+        //     'filename' => 'required',
+        // ]);
+
+        // $testmultiple = TestmultipleUpload::find($id);
+        // $testmultiple->filename = $request->filename;
+
+        // if($request->hasFile('filename')){
+        if($request->filename){
+            // die();
+        //    $newFile = $uploader->upload($request->file('filename'), '/files');
+        //     if( !($testmultiple->filename === $newFile)){
+        //         if(file_exists(public_path('/files' . $testmultiple->filename))){
+        //             unlink(public_path('/files' . $testmultiple->filename));
+        //         }
+        //     }
+        //     $testmultiple->filename = $newFile;
+        }else{
+            echo ('nay');
+        }
+
+        // $testmultiple->save();
+        // return back();
+
+        // return redirect('testmultiple')->with('success', 'Your files updated successfully!');
     }
 
     /**
@@ -121,9 +145,9 @@ class TestmultipleUploadController extends Controller
      * @param  \App\Models\TestmultipleUpload  $testmultipleUpload
      * @return \Illuminate\Http\Response
      */
-    public function edit(TestmultipleUpload $testmultipleUpload)
+    public function edit(TestmultipleUpload $testmultipleUpload, $id)
     {
-        $testmultiples = TestmultipleUpload::all();
+        $testmultiples = TestmultipleUpload::find($id);
         return view('Testmultiple.edit', compact('testmultiples'));
     }
 
@@ -136,7 +160,21 @@ class TestmultipleUploadController extends Controller
      */
     public function update(Request $request, TestmultipleUpload $testmultipleUpload)
     {
-        return ('hi');
+        // return $request;
+        // $this->validate($request, [
+        //     'filename' => 'required',
+        // ]);
+
+        // $upload = $request->file('filename');
+
+        // if ($request->hasfile('filename')) {
+        //     $name = $upload->getClientOriginalName();
+        //     $upload->move(public_path() . '/files', $name);
+        //     $file = new TestmultipleUpload();
+        //     $file->filename = $name;
+        //     $file->save();
+        // }
+        // return redirect('testmultiple')->with('success', 'Your files updated successfully!');
     }
 
     /**

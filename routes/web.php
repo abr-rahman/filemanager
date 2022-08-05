@@ -27,11 +27,6 @@ use App\Http\Controllers\TestmultipleUploadController;
 
 Auth::routes();
 
-Route::get('/open/file', [CategoryController::class, 'openfile'])->name('create.file');
-Route::get('/test/file', [CategoryController::class, 'testfile'])->name('test.file');
-
-Route::post('/apply/multiple_upload', [CategoryController::class, 'applyfile'])->name('apply.multiple_upload');
-
 Route::resource('testmultiple', TestmultipleUploadController::class);
 
 Route::post('/folder/store', [TestmultipleUploadController::class, 'folderstore'])->name('folder.store');

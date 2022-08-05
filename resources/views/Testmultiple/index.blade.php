@@ -73,16 +73,6 @@
                     </div>
                     <h6 class="text-primary mb-0">256 MB</h6>
                 </div>
-                @foreach ($onlyFolders as $onlyFolde)
-                    <div class="d-flex align-items-center mt-3">
-                        <div class="flex-grow-1 ms-2">
-                                <h6 class="mb-0">Folder</h6>
-                                <p class="mb-0 text-secondary"></p>
-                        </div>
-                        <h6 class="text-primary mb-0">256 MB</h6>
-                    </div>
-                @endforeach
-
 
                 <div class="d-flex align-items-center mt-3">
                     <div class="fm-file-box bg-light-danger text-danger"><i class='bx bx-video'></i>
