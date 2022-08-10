@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class TestmultipleUpload extends Model
 {
     use HasFactory;
+    protected $fillable = ['filename'];
 }

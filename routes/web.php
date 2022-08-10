@@ -27,7 +27,12 @@ use App\Http\Controllers\TestmultipleUploadController;
 
 Auth::routes();
 
-Route::resource('testmultiple', TestmultipleUploadController::class);
+Route::get('testmultiple', [TestmultipleUploadController::class, 'index']);
+Route::get('testmultiple/create', [TestmultipleUploadController::class, 'create'])->name('testmultiple.create');
+Route::post('testmultiple/store', [TestmultipleUploadController::class, 'store'])->name('testmultiple.store');
+Route::get('testmultiple/edit/{id}', [TestmultipleUploadController::class, 'edit'])->name('testmultiple.edit');
+Route::post('testmultiple/update/{id}', [TestmultipleUploadController::class, 'update'])->name('testmultiple.update');
+Route::get('testmultiple/show', [TestmultipleUploadController::class, 'show']);
 
 Route::post('/folder/store', [TestmultipleUploadController::class, 'folderstore'])->name('folder.store');
 
