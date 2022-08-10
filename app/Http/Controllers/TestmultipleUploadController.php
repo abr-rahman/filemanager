@@ -2,15 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\TestmultipleUpload;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
-use Intervention\Image\Facades\Image;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Validation\Rules\Unique;
+use Illuminate\Support\Facades\File;
 
 class TestmultipleUploadController extends Controller
 {
@@ -50,12 +44,12 @@ class TestmultipleUploadController extends Controller
             }
         }
 
-        $picture = count($images);
+        $images = count($images);
         $videos = count($videos);
         $audios = count($audios);
         $documents = count($documents);
 
-        return view('Testmultiple.index', compact('testmultiples', 'audios', 'videos', 'images', 'documents', 'picture'));
+        return view('Testmultiple.index', compact('testmultiples', 'audios', 'videos', 'images', 'documents'));
     }
 
     public function create()
@@ -126,8 +120,18 @@ class TestmultipleUploadController extends Controller
         //
     }
 
-    // public function multipleedit($id)
-    // {
-    //     return ('hi');
-    // }
+    public function folderstore(TestmultipleUpload $testmultipleUpload)
+    {
+        $result = file_exists(public_path('hello-world')) ?: File::makeDirectory('hello-world');
+        $all =  scandir(public_path());
+
+        $onlyFolders =  array_filter($all, function ($item) {
+            return is_dir($item) && !in_array($item, ['.', '..']);
+        });
+
+        // return $onlyFolders;
+        return view('Testmultiple.index', compact('onlyFolders'));
+    }
+
+
 }

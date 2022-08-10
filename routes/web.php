@@ -40,5 +40,4 @@ Route::get('/photo', [FolderController::class, 'photofolder'])->name('photo.fold
 Route::get('/video', [FolderController::class, 'videofolder'])->name('video.folder');
 Route::get('/odio', [FolderController::class, 'odiofolder'])->name('odio.folder');
 Route::get('/document', [FolderController::class, 'documentfolder'])->name('document.folder');
-Route::post('/folder/store', [FolderController::class, 'folderstore'])->name('folder.store');
 Route::get('/index/edit/{id}', [EditController::class, 'indexToedit'])->name('indexTo.edit');

@@ -57,7 +57,7 @@
                     <div class="flex-grow-1 ms-2">
                         <a href="{{ route('photo.folder') }}">
                             <h6 class="mb-0">Images</h6>
-                            <p class="mb-0 text-secondary">{{ $picture }} Files</p>
+                            <p class="mb-0 text-secondary">{{ $images }} Files</p>
                         </a>
                     </div>
                     <h6 class="text-primary mb-0">15.3 GB</h6>
@@ -112,7 +112,7 @@
                                         </div>
                                     </div>
                                     <h6 class="mb-0 text-primary">Image</h6>
-                                    <small>{{ $picture }} Files</small>
+                                    <small>{{ $images }} Files</small>
                                 </div>
                             </a>
                         </div>
