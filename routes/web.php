@@ -4,9 +4,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EditController;
 use App\Http\Controllers\FolderController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\SubCategoryController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TestmultipleUploadController;
 
 /*
@@ -20,18 +19,23 @@ use App\Http\Controllers\TestmultipleUploadController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
 
 Auth::routes();
 
-Route::get('testmultiple', [TestmultipleUploadController::class, 'index']);
+// Route::get('home', [HomeController::class, 'index']);
+
+Route::get('auth/register', [RegisterController::class, 'register']);
+
+Route::get('home', [TestmultipleUploadController::class, 'index']);
 Route::get('testmultiple/create', [TestmultipleUploadController::class, 'create'])->name('testmultiple.create');
 Route::post('testmultiple/store', [TestmultipleUploadController::class, 'store'])->name('testmultiple.store');
 Route::get('testmultiple/edit/{id}', [TestmultipleUploadController::class, 'edit'])->name('testmultiple.edit');
 Route::post('testmultiple/update/{id}', [TestmultipleUploadController::class, 'update'])->name('testmultiple.update');
+Route::get('testmultiple/destroy/{id}', [TestmultipleUploadController::class, 'destroy'])->name('testmultiple.destroy');
 Route::get('testmultiple/show', [TestmultipleUploadController::class, 'show']);
 
 Route::post('/folder/store', [TestmultipleUploadController::class, 'folderstore'])->name('folder.store');
@@ -41,3 +45,5 @@ Route::get('/video', [FolderController::class, 'videofolder'])->name('video.fold
 Route::get('/odio', [FolderController::class, 'odiofolder'])->name('odio.folder');
 Route::get('/document', [FolderController::class, 'documentfolder'])->name('document.folder');
 Route::get('/index/edit/{id}', [EditController::class, 'indexToedit'])->name('indexTo.edit');
+
+

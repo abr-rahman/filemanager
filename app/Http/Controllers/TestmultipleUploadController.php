@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\File;
 
 class TestmultipleUploadController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function index()
     {
@@ -75,7 +79,7 @@ class TestmultipleUploadController extends Controller
         }
 
         // return redirect('testmultiple')->with('message', 'Your files added successfully!');
-        return redirect('testmultiple')->with('success', 'Your files added successfully!');
+        return redirect('home')->with('success', 'Your files added successfully!');
     }
 
     public function show(Request $request, $id)
@@ -112,16 +116,23 @@ class TestmultipleUploadController extends Controller
             }
         }
         $testmultiple->save();
-        return redirect('testmultiple')->with('success', 'Your files updated successfully!');
+        return redirect('home')->with('success', 'Your files updated successfully!');
     }
 
-    public function destroy(TestmultipleUpload $testmultipleUpload)
+    public function destroy($id)
     {
-        //
+
+        $delete = TestmultipleUpload::find($id);
+        $oldFile = public_path('files/') . $delete->filename;
+            unlink($oldFile);
+        $delete->delete();
+        return back();
     }
 
-    public function folderstore(TestmultipleUpload $testmultipleUpload)
+    public function folderstore(Request $request)
     {
+        // $request->folder_create = File::makeDirectory(public_path() . '/folder');
+
         $result = file_exists(public_path('hello-world')) ?: File::makeDirectory('hello-world');
         $all =  scandir(public_path());
 

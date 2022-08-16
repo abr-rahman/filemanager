@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\File;
 
 class FolderController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function photofolder()
     {
         $testmultiple = TestmultipleUpload::all();
@@ -41,7 +46,7 @@ class FolderController extends Controller
             $extension = array_pop($array);
             $extension = strtolower($extension);
 
-            if (in_array($extension, ['mp4', 'mkv', 'avi'])) {
+            if (in_array($extension, ['mp4', 'mkv', 'avi', 'ogg', '3gp', 'm4a'])) {
                 $videos[] = $item;
             }
 

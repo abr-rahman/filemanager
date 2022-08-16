@@ -4,6 +4,9 @@
     .imageFile{
         border-radius: 50px;
     }
+    .btn i {
+    font-size: 1.0em !important;
+    }
 </style>
 
 
@@ -168,7 +171,7 @@
                         <thead>
                             <tr>
                                 <th>Name <i class='bx bx-up-arrow-alt ms-2'></i></th>
-                                <th>Members</th>
+                                {{-- <th>Members</th> --}}
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -177,13 +180,23 @@
                             <tr>
                                 <td>
                                     <div class="d-flex align-items-center">
-                                        <div><i class='bx bxs-file-pdf me-2 font-24 text-success'></i></div>
+                                        <div><i class='bx bx-right-arrow-alt me-2 font-24 text-success'></i></div>
                                         <a href=" {{ substr(URL::asset("files/$testmulti->filename"), 7, 10) }}" class="font-weight-bold text-dark"  target="_blank">{{ $testmulti->filename }}</a>
                                     </div>
                                 </td>
-                                <td>{{ $testmulti->created_at }}</td>
+
+                                {{-- <td>{{ $testmulti->created_at->format('d/m/y') }}</td> --}}
                                 <td>
-                                    <a href="{{ route('testmultiple.edit', $testmulti->id) }}" type="button" class="btn btn-primary m-1" style="padding: 10px;"><i class="lni lni-syringe"></i></a>
+                                    <div class="btn-group m-1" role="group" aria-label="Basic example">
+                                        <a href="{{ route('testmultiple.edit', $testmulti->id) }}"  class="btn-design  btn btn-outline-info"><i class="lni lni-syringe py-3"></i></a>
+
+                                        <form action="" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <a href="{{ route('testmultiple.destroy', $testmulti->id) }}"  class="btn-design btn btn-outline-danger"><i class="fa-regular fa-trash-can fa-2x py-3"></i></a>
+                                        </form>
+
+                                    </div>
                                 </td>
                             </tr>
                             @endforeach
@@ -196,3 +209,10 @@
 </div>
 
 @endsection
+
+<style>
+    .btn-design {
+        height: 28px !important;
+        border-radius: 0px !important;
+    }
+</style>
