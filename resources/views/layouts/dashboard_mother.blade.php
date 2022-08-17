@@ -38,7 +38,7 @@
 		<div class="sidebar-wrapper" data-simplebar="true">
 			<div class="sidebar-header">
 				<div class="">
-					{{-- <img src="{{ asset('dashboard')}}/assets/images/logo-icon.png" class="logo-icon-2" alt="" /> --}}
+					<img src="{{ asset('dashboard')}}/assets/images/lUBA lOGO.png" class="logo-icon-2" alt="" />
 				</div>
 				<div>
 					{{-- <h4 class="logo-text">Syndash</h4> --}}

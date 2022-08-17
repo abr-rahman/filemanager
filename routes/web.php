@@ -29,6 +29,7 @@ Auth::routes();
 // Route::get('home', [HomeController::class, 'index']);
 
 Route::get('auth/register', [RegisterController::class, 'register']);
+Route::post('/auth/register/store', [RegisterController::class, 'registerstore'])->name('auth.register.store');
 
 Route::get('home', [TestmultipleUploadController::class, 'index']);
 Route::get('testmultiple/create', [TestmultipleUploadController::class, 'create'])->name('testmultiple.create');

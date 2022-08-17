@@ -82,11 +82,6 @@ class TestmultipleUploadController extends Controller
         return redirect('home')->with('success', 'Your files added successfully!');
     }
 
-    public function show(Request $request, $id)
-    {
-    }
-
-
     public function edit(TestmultipleUpload $testmultipleUpload, $id)
     {
         $testmultiples = TestmultipleUpload::find($id);

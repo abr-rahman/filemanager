@@ -30,6 +30,8 @@ class FolderController extends Controller
                 $images[] = $item;
             }
         }
+
+
         return view('Testmultiple.photo', compact('images'));
     }
 
@@ -116,3 +118,4 @@ class FolderController extends Controller
         return view('Testmultiple.index', compact('onlyFolders'));
     }
 }
+
