@@ -32,7 +32,7 @@ class FolderController extends Controller
         }
 
 
-        return view('Testmultiple.photo', compact('images'));
+        return view('folder.photo', compact('images'));
     }
 
     public function videofolder()
@@ -53,7 +53,7 @@ class FolderController extends Controller
             }
 
         }
-        return view('Testmultiple.video', compact('videos'));
+        return view('folder.video', compact('videos'));
     }
 
 
@@ -75,7 +75,7 @@ class FolderController extends Controller
                 $audios[] = $item;
             }
         }
-        return view('Testmultiple.odio', compact('audios'));
+        return view('folder.odio', compact('audios'));
     }
 
 
@@ -97,7 +97,7 @@ class FolderController extends Controller
             }
         }
 
-        return view('Testmultiple.documents', compact('documents'));
+        return view('folder.documents', compact('documents'));
     }
 
     public function folderstore(Request $request){

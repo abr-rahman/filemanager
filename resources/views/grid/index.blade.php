@@ -173,6 +173,7 @@
 
                 </div>
                 <!--end row-->
+
                 <div class="row">
                      @foreach ($testmultiples as $testmulti)
                             <div class="col-lg-2 m-2 ">
