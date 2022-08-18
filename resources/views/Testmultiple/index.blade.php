@@ -23,18 +23,26 @@
             </ol>
         </nav>
     </div>
-
+    <div class="ms-auto">
+        <div class="btn-group">
+            <a href="{{ route('grid.layet') }}" type="button" class="btn btn-primary "> Image</a>
+            <a href="{{ route('list.audio') }}" type="button" class="btn btn-info "> Audio</a>
+            <a href="{{ route('list.video') }}" type="button" class="btn btn-primary "> Video</a>
+            <a href="{{ route('document.folder') }}" type="button" class="btn btn-info "> Document</a>
+            <a href="{{ route('grid.layet') }}" type="button" class="btn btn-primary"><i class="lni lni-grid-alt"></i> Grid</a>
+        </div>
+    </div>
 </div>
 {{-- <!--end breadcrumb--> --}}
 <div class="row">
     <div class="col-12 col-lg-3">
         <div class="card">
             <div class="card-body">
-                <form action="{{ route('folder.store') }}" method="post">
+                <form action="{{ route('testmultiple.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col-7">
-                            <input type="text" class="form-control" name="folder_create" placeholder="Create File">
+                            <input type="file" class="form-control" name="filename" placeholder="Add File">
                         </div>
                         <div class="col-2">
                             <button type="submit" class="btn btn-primary"> add</button>

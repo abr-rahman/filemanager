@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EditController;
 use App\Http\Controllers\FolderController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LayeoutController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TestmultipleUploadController;
 
@@ -46,5 +47,10 @@ Route::get('/video', [FolderController::class, 'videofolder'])->name('video.fold
 Route::get('/odio', [FolderController::class, 'odiofolder'])->name('odio.folder');
 Route::get('/document', [FolderController::class, 'documentfolder'])->name('document.folder');
 Route::get('/index/edit/{id}', [EditController::class, 'indexToedit'])->name('indexTo.edit');
+
+
+Route::get('/grid/layet', [LayeoutController::class, 'gridlayet'])->name('grid.layet');
+Route::get('/grid/video', [LayeoutController::class, 'listvideo'])->name('list.video');
+Route::get('/grid/audio', [LayeoutController::class, 'listaudio'])->name('list.audio');
 
 
