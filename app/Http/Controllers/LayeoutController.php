@@ -130,3 +130,14 @@ class LayeoutController extends Controller
         return view('grid.audio', compact('testmultiples', 'audios', 'videos', 'images', 'documents'));
     }
 }
+
+
+
+
+
+
+
+
+
+
+

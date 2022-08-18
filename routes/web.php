@@ -53,4 +53,6 @@ Route::get('/grid/layet', [LayeoutController::class, 'gridlayet'])->name('grid.l
 Route::get('/grid/video', [LayeoutController::class, 'listvideo'])->name('list.video');
 Route::get('/grid/audio', [LayeoutController::class, 'listaudio'])->name('list.audio');
 
+Route::get('/grid/list', [LayeoutController::class, 'gridlist'])->name('grid.list');
+
 
