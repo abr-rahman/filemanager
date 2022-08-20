@@ -16,11 +16,11 @@ return new class extends Migration
         Schema::create('registers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('phone_number')->nullable();
             $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('confirm_password');
-            $table->text('address')->nullable();
+            $table->string('phone_number')->nullable();
+            $table->rememberToken();
             $table->timestamps();
         });
     }
