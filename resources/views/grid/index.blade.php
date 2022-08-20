@@ -25,10 +25,6 @@
     </div>
     <div class="ms-auto">
         <div class="btn-group">
-            <a href="{{ route('grid.layet') }}" type="button" class="btn btn-primary "> Image</a>
-            <a href="{{ route('list.audio') }}" type="button" class="btn btn-info "> Audio</a>
-            <a href="{{ route('list.video') }}" type="button" class="btn btn-primary "> Video</a>
-            <a href="{{ route('document.folder') }}" type="button" class="btn btn-info "> Document</a>
             <a href="{{ url('/home') }}" type="button" class="btn btn-primary"><i class="lni lni-grid-alt"></i> List</a>
         </div>
     </div>
@@ -178,12 +174,14 @@
                      @foreach ($testmultiples as $testmulti)
                             <div class="col-lg-2 m-2 ">
                                 <div class="card-body text-center " style="width: 100%; content-visibility: auto; height: 200px; position: relative;">
-                                    <img class=" radius-10 border" src="{{ URL::asset("files/$testmulti->filename")}}" width="195" height="200" class="border" alt="" />
-                                </div>
+                                  <iframe id="Iframe1" src="{{ URL::asset("files/$testmulti->filename")}}" title="wow"><img style="width: 66%;" src="" alt=""></iframe>
+                                  {{-- <a href=" {{ URL::asset("files/$testmulti->filename") }}" class="font-weight-bold text-dark"  target="_blank">{{ $testmulti->filename }}</a> --}}
+
+                            </div>
                             </div>
                     @endforeach
-                </div>
 
+                </div>
             </div>
         </div>
     </div>
@@ -197,3 +195,9 @@
         border-radius: 0px !important;
     }
 </style>
+
+<script>
+    $("#Iframe1").contents().find("img").css({
+    'width': '65px !important'
+    });
+</script>

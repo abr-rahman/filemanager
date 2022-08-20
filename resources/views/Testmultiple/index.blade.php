@@ -25,11 +25,7 @@
     </div>
     <div class="ms-auto">
         <div class="btn-group">
-            <a href="{{ route('grid.layet') }}" type="button" class="btn btn-primary "> Image</a>
-            <a href="{{ route('list.audio') }}" type="button" class="btn btn-info "> Audio</a>
-            <a href="{{ route('list.video') }}" type="button" class="btn btn-primary "> Video</a>
-            <a href="{{ route('document.folder') }}" type="button" class="btn btn-info "> Document</a>
-            <a href="{{ route('grid.layet') }}" type="button" class="btn btn-primary"><i class="lni lni-grid-alt"></i> Grid</a>
+            <a href="{{ route('grid.layout') }}" type="button" class="btn btn-primary"><i class="lni lni-grid-alt"></i> Grid</a>
         </div>
     </div>
 </div>
@@ -196,7 +192,8 @@
                                 {{-- <td>{{ $testmulti->created_at->format('d/m/y') }}</td> --}}
                                 <td>
                                     <div class="btn-group m-1" role="group" aria-label="Basic example">
-                                        <a href="{{ route('testmultiple.edit', $testmulti->id) }}"  class="btn-design  btn btn-outline-info"><i class="lni lni-syringe py-3"></i></a>
+                                        <a href=""  class="btn-design  btn btn-outline-info"><i class="lni lni-syringe py-3"></i></a>
+                                        {{-- <a href="{{ route('testmultiple.edit', $testmulti->id) }}"  class="btn-design  btn btn-outline-info"><i class="lni lni-syringe py-3"></i></a> --}}
 
                                         <form action="" method="post">
                                             @csrf
@@ -224,3 +221,87 @@
         border-radius: 0px !important;
     }
 </style>
+
+<script>
+  $(document).ready(function () {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $('#create-new-post').click(function () {
+        $('#btn-save').val("create-post");
+        $('#postForm').trigger("reset");
+        $('#postCrudModal').html("Add New post");
+        $('#ajax-crud-modal').modal('show');
+    });
+
+    $('body').on('click', '#edit-post', function () {
+      var post_id = $(this).data('id');
+    //   $.get('ajax-posts/'+post_id+'/edit', function (data) {
+         $('#postCrudModal').html("Edit post");
+          $('#btn-save').val("edit-post");
+          $('#ajax-crud-modal').modal('show');
+          $('#post_id').val(data.id);
+          $('#title').val(data.title);
+          $('#body').val(data.body);
+      })
+   });
+    $('body').on('click', '.delete-post', function () {
+        var post_id = $(this).data("id");
+        confirm("Are You sure want to delete !");
+
+        $.ajax({
+            type: "DELETE",
+            url: "{{ url('ajax-posts')}}"+'/'+post_id,
+            success: function (data) {
+                $("#post_id_" + post_id).remove();
+            },
+            error: function (data) {
+                console.log('Error:', data);
+            }
+        });
+    });
+//   });
+
+ if ($("#postForm").length > 0) {
+      $("#postForm").validate({
+
+     submitHandler: function(form) {
+      var actionType = $('#btn-save').val();
+      $('#btn-save').html('Sending..');
+
+      $.ajax({
+          data: $('#postForm').serialize(),
+        //   url: "",
+          type: "POST",
+          dataType: 'json',
+          success: function (data) {
+              var post = '<tr id="post_id_' + data.id + '"><td>' + data.id + '</td><td>' + data.title + '</td><td>' + data.body + '</td>';
+              post += '<td><a href="javascript:void(0)" id="edit-post" data-id="' + data.id + '" class="btn btn-info">Edit</a></td>';
+              post += '<td><a href="javascript:void(0)" id="delete-post" data-id="' + data.id + '" class="btn btn-danger delete-post">Delete</a></td></tr>';
+
+
+              if (actionType == "create-post") {
+                  $('#posts-crud').prepend(post);
+              } else {
+                  $("#post_id_" + data.id).replaceWith(post);
+              }
+
+              $('#postForm').trigger("reset");
+              $('#ajax-crud-modal').modal('hide');
+              $('#btn-save').html('Save Changes');
+
+          },
+          error: function (data) {
+              console.log('Error:', data);
+              $('#btn-save').html('Save Changes');
+          }
+      });
+    }
+  })
+}
+
+
+</script>

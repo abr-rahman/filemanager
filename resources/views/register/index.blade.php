@@ -45,7 +45,7 @@
                                             <div class="row mb-3">
                                                 <label for="inputPhoneNo2" class="col-sm-3 col-form-label">Phone No</label>
                                                 <div class="col-sm-9">
-                                                    <input type="number" class="form-control" name="phone_number" id="inputPhoneNo2" placeholder="Phone No">
+                                                    <input type="phone" class="form-control" name="phone_number" id="inputPhoneNo2" placeholder="Phone No">
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
@@ -63,24 +63,9 @@
                                             <div class="row mb-3">
                                                 <label for="inputConfirmPassword2" class="col-sm-3 col-form-label">Confirm Password</label>
                                                 <div class="col-sm-9">
-                                                    <input type="password" class="form-control" id="inputConfirmPassword2" name="confirm_password" placeholder="Confirm Password">
+                                                    <input type="password" class="form-control" id="inputConfirmPassword2" name="password_confirmation" placeholder="Confirm Password">
                                                 </div>
                                             </div>
-                                            <div class="row mb-3">
-                                                <label for="inputAddress4" class="col-sm-3 col-form-label">Address</label>
-                                                <div class="col-sm-9">
-                                                    <textarea class="form-control" id="inputAddress4" rows="3" name="address" placeholder="Address"></textarea>
-                                                </div>
-                                            </div>
-                                            {{-- <div class="row mb-3">
-                                                <label for="inputAddress4" class="col-sm-3 col-form-label"></label>
-                                                <div class="col-sm-9">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" id="gridCheck4">
-                                                        <label class="form-check-label" for="gridCheck4">Check me out</label>
-                                                    </div>
-                                                </div>
-                                            </div> --}}
                                             <div class="row">
                                                 <label class="col-sm-3 col-form-label"></label>
                                                 <div class="col-sm-9">

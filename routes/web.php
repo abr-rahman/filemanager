@@ -32,7 +32,18 @@ Auth::routes();
 Route::get('auth/register', [RegisterController::class, 'register']);
 Route::post('/auth/register/store', [RegisterController::class, 'registerstore'])->name('auth.register.store');
 
-Route::get('home', [TestmultipleUploadController::class, 'index']);
+Route::post('/auth/login/store', [RegisterController::class, 'loginstore'])->name('auth.login.store');
+Route::get('/auth/login', [RegisterController::class, 'authlogin'])->name('auth.login');
+
+
+Route::group(['middleware' => 'auth'], function(){
+    Route::post('/auth/logout', [RegisterController::class, 'authlogout'])->name('auth.logout');
+    Route::get('home', [TestmultipleUploadController::class, 'index']);
+});
+
+
+
+
 Route::get('testmultiple/create', [TestmultipleUploadController::class, 'create'])->name('testmultiple.create');
 Route::post('testmultiple/store', [TestmultipleUploadController::class, 'store'])->name('testmultiple.store');
 Route::get('testmultiple/edit/{id}', [TestmultipleUploadController::class, 'edit'])->name('testmultiple.edit');
@@ -49,10 +60,6 @@ Route::get('/document', [FolderController::class, 'documentfolder'])->name('docu
 Route::get('/index/edit/{id}', [EditController::class, 'indexToedit'])->name('indexTo.edit');
 
 
-Route::get('/grid/layet', [LayeoutController::class, 'gridlayet'])->name('grid.layet');
-Route::get('/grid/video', [LayeoutController::class, 'listvideo'])->name('list.video');
-Route::get('/grid/audio', [LayeoutController::class, 'listaudio'])->name('list.audio');
-
-Route::get('/grid/list', [LayeoutController::class, 'gridlist'])->name('grid.list');
+Route::get('/grid/layet', [LayeoutController::class, 'gridlayet'])->name('grid.layout');
 
 
