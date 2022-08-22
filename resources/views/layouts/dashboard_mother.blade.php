@@ -29,6 +29,15 @@
 	<link rel="stylesheet" href="{{ asset('dashboard')}}/assets/css/app.css" />
 	<link rel="stylesheet" href="{{ asset('dashboard')}}/assets/css/dark-sidebar.css" />
 	<link rel="stylesheet" href="{{ asset('dashboard')}}/assets/css/dark-theme.css" />
+
+    <link rel="stylesheet" type="text/css"
+     href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 </head>
 
 <body>
@@ -41,7 +50,7 @@
 					<img src="{{ asset('dashboard')}}/assets/images/lUBA lOGO.png" class="logo-icon-2" alt="" />
 				</div>
 				<div>
-					{{-- <h4 class="logo-text">Syndash</h4> --}}
+					{{-- <h4 class="logo-text">Luba</h4> --}}
 				</div>
 				<a href="javascript:;" class="toggle-btn ms-auto"> <i class="bx bx-menu"></i>
 				</a>
@@ -138,7 +147,6 @@
 										class="bx bx-cog"></i><span>Settings</span></a>
 
                                 @guest
-
                                     @if (Route::has('login'))
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -153,9 +161,11 @@
 
                                 @else
                                     <a class="dropdown-item" href="{{ route('auth.logout') }}"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="bx bx-power-off"></i><span>Logout</span></a>
+
                                     <form id="logout-form" action="{{ route('auth.logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
+
                                 @endguest
 							</div>
 						</li>
@@ -262,6 +272,7 @@
 	</script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 </body>
 
 

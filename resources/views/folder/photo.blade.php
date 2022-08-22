@@ -1,11 +1,21 @@
 @extends('layouts.dashboard_mother')
 
+<style>
+        .image_size{
+            max-width: 200px;
+            max-height: 200px;
+            /* width: 100%;  */
+            /* height: 200px; position: relative; */
+        }
+</style>
+
+
 @section('content')
 <div class="row">
     @foreach ($images as $image)
-    <div class="col-lg-2 m-2 ">
-        <div class="card-body text-center " style="width: 100%; content-visibility: auto; height: 200px; position: relative;">
-            <img class=" radius-10 border" src="{{ URL::asset("files/$image->filename")}}" width="195" height="200" class="border" alt="" />
+    <div class="col-lg-2 m-2 image_size">
+        <div class="card-body text-center " >
+            <img class="image_size radius-10 border" src="{{ URL::asset("files/$image->filename")}}"  class="border" alt="" />
         </div>
     </div>
     @endforeach

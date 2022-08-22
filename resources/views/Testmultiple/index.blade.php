@@ -110,7 +110,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="row mt-3">
-                    <div class="col-12 col-lg-3">
+                    <div class="col-12 col-lg-12">
                         <div class="card shadow-none border radius-15">
                             <a href="{{ route('photo.folder') }}">
                                 <div class="card-body">
@@ -124,7 +124,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col-12 col-lg-3">
+                    <div class="col-12 col-lg-12">
                         <div class="card shadow-none border radius-15">
                             <a href="{{ route('video.folder') }}">
                                 <div class="card-body">
@@ -138,7 +138,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col-12 col-lg-3">
+                    <div class="col-12 col-lg-12">
                         <div class="card shadow-none border radius-15">
                             <a href="{{ route('odio.folder') }}">
                                 <div class="card-body">
@@ -152,7 +152,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col-12 col-lg-3">
+                    <div class="col-12 col-lg-12">
                         <div class="card shadow-none border radius-15">
                             <a href="{{ route('document.folder') }}">
                                 <div class="card-body">
@@ -169,7 +169,6 @@
 
                 </div>
                 <!--end row-->
-
                 <div class="table-responsive mt-3">
                     <table class="table table-striped table-hover table-sm mb-0">
                         <thead>
@@ -185,15 +184,20 @@
                                 <td>
                                     <div class="d-flex align-items-center">
                                         <div><i class='bx bx-right-arrow-alt me-2 font-24 text-success'></i></div>
-                                        <a href=" {{ substr(URL::asset("files/$testmulti->filename"), 7, 10) }}" class="font-weight-bold text-dark"  target="_blank">{{ $testmulti->filename }}</a>
+
+                                        <a href=""  data-toggle="modal" data-target=".bd-example-modal-lg" class="font-weight-bold text-dark">{{ substr($testmulti->filename, 0 , 10)  }}</a>
+
+                                        {{-- <a href="{{ URL::asset("files/$testmulti->filename")  }}"  class="font-weight-bold text-dark"  target="_blank">{{ substr($testmulti->filename, 0 , 10)  }}</a> --}}
+
+
                                     </div>
                                 </td>
 
                                 {{-- <td>{{ $testmulti->created_at->format('d/m/y') }}</td> --}}
                                 <td>
                                     <div class="btn-group m-1" role="group" aria-label="Basic example">
-                                        <a href=""  class="btn-design  btn btn-outline-info"><i class="lni lni-syringe py-3"></i></a>
-                                        {{-- <a href="{{ route('testmultiple.edit', $testmulti->id) }}"  class="btn-design  btn btn-outline-info"><i class="lni lni-syringe py-3"></i></a> --}}
+                                        {{-- <a href="" class="btn-design  btn btn-outline-info"><i class="lni lni-syringe py-3"></i></a> --}}
+                                        <a href="{{ route('testmultiple.edit', $testmulti->id) }}"  class="btn-design  btn btn-outline-info"><i class="lni lni-syringe py-3"></i></a>
 
                                         <form action="" method="post">
                                             @csrf
@@ -207,6 +211,16 @@
                             @endforeach
                         </tbody>
                     </table>
+{{--
+                    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      ...
+    </div>
+  </div>
+</div> --}}
+
+
                 </div>
             </div>
         </div>
@@ -221,6 +235,44 @@
         border-radius: 0px !important;
     }
 </style>
+
+ <script>
+            @if(Session::has('message'))
+            toastr.options =
+            {
+                "closeButton" : true,
+                "progressBar" : true
+            }
+                    toastr.success("{{ session('message') }}");
+            @endif
+
+            @if(Session::has('error'))
+            toastr.options =
+            {
+                "closeButton" : true,
+                "progressBar" : true
+            }
+                    toastr.error("{{ session('error') }}");
+            @endif
+
+            @if(Session::has('info'))
+            toastr.options =
+            {
+                "closeButton" : true,
+                "progressBar" : true
+            }
+                    toastr.info("{{ session('info') }}");
+            @endif
+
+            @if(Session::has('warning'))
+            toastr.options =
+            {
+                "closeButton" : true,
+                "progressBar" : true
+            }
+                    toastr.warning("{{ session('warning') }}");
+            @endif
+        </script>
 
 <script>
   $(document).ready(function () {
@@ -305,3 +357,4 @@
 
 
 </script>
+

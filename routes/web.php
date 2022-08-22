@@ -35,14 +35,12 @@ Route::post('/auth/register/store', [RegisterController::class, 'registerstore']
 Route::post('/auth/login/store', [RegisterController::class, 'loginstore'])->name('auth.login.store');
 Route::get('/auth/login', [RegisterController::class, 'authlogin'])->name('auth.login');
 
-
 Route::group(['middleware' => 'auth'], function(){
-    Route::post('/auth/logout', [RegisterController::class, 'authlogout'])->name('auth.logout');
-    Route::get('home', [TestmultipleUploadController::class, 'index']);
+
+    Route::POST('/auth/logout', [RegisterController::class, 'authlogout'])->name('auth.logout');
+    Route::get('/home', [TestmultipleUploadController::class, 'index']);
+
 });
-
-
-
 
 Route::get('testmultiple/create', [TestmultipleUploadController::class, 'create'])->name('testmultiple.create');
 Route::post('testmultiple/store', [TestmultipleUploadController::class, 'store'])->name('testmultiple.store');
@@ -61,5 +59,7 @@ Route::get('/index/edit/{id}', [EditController::class, 'indexToedit'])->name('in
 
 
 Route::get('/grid/layet', [LayeoutController::class, 'gridlayet'])->name('grid.layout');
+
+// Route::get('/edit', [EditController::class, 'edit'])->name('index.edit');
 
 

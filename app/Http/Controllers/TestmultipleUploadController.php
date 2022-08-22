@@ -78,8 +78,9 @@ class TestmultipleUploadController extends Controller
             $file->save();
         }
 
-        // return redirect('testmultiple')->with('message', 'Your files added successfully!');
-        return redirect('home')->with('success', 'Your files added successfully!');
+        return redirect('home')->with('message', 'Data added Successfully');
+
+        // return redirect('home')->with('success', 'Your files added successfully!');
     }
 
     public function edit(TestmultipleUpload $testmultipleUpload, $id)
@@ -122,6 +123,10 @@ class TestmultipleUploadController extends Controller
             unlink($oldFile);
         $delete->delete();
         return back();
+    }
+    public function show()
+    {
+        return view('Testmultiple.show');
     }
 
     public function folderstore(Request $request)
