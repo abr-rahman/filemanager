@@ -17,7 +17,6 @@ class TestmultipleUploadController extends Controller
     {
         $testmultiples = TestmultipleUpload::all();
 
-        // $count = TestmultipleUpload::where('id', $id);
 
         $audios = [];
         $videos = [];
@@ -48,12 +47,12 @@ class TestmultipleUploadController extends Controller
             }
         }
 
-        $images = count($images);
-        $videos = count($videos);
-        $audios = count($audios);
-        $documents = count($documents);
+        $imagesCount = count($images);
+        $videosCount = count($videos);
+        $audiosCount = count($audios);
+        $documentsCount = count($documents);
 
-        return view('Testmultiple.index', compact('testmultiples', 'audios', 'videos', 'images', 'documents'));
+        return view('Testmultiple.index', compact('testmultiples', 'audios', 'videos', 'images', 'documents', 'imagesCount', 'videosCount', 'documentsCount', 'audiosCount'));
     }
 
     public function create()

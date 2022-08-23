@@ -1,0 +1,12 @@
+
+.edit_des{
+    background: #ebebeb;
+    margin-top: -16px;
+    margin-left: -15px;
+}
+.edit_input{
+    width: 135px;
+}
+.pointer {
+    cursor: pointer;
+}
