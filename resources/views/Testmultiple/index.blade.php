@@ -26,7 +26,8 @@
         </div>
         <div class="ms-auto">
             <div class="btn-group">
-                <a href="{{ route('grid.layout') }}" type="button" class="btn btn-primary"><i class="lni lni-grid-alt"></i>
+                {{-- <a href="{{ route('grid.layout') }}" id="gridlayout" type="button" class="btn btn-primary"><i class="lni lni-grid-alt"></i> --}}
+                <a id="gridlayout" type="button" class="btn btn-primary"><i class="lni lni-grid-alt"></i>
                     Grid</a>
             </div>
         </div>
@@ -71,23 +72,23 @@
                         <div class="flex-grow-1 ms-2">
                             <a href="{{ route('photo.folder') }}">
                                 <h6 class="mb-0">Images</h6>
-                                <p class="mb-0 text-secondary"> Files</p>
+                                <p class="mb-0 text-secondary"> Files </p>
                             </a>
                         </div>
-                        <h6 class="text-primary mb-0">15.3 GB</h6>
-                    </div>
-                    <div class="d-flex align-items-center mt-3">
-                        <div class="fm-file-box bg-light-success text-success"><i class='bx bxs-file-doc'></i>
-                        </div>
-                        <div class="flex-grow-1 ms-2">
-                            <a href="{{ route('document.folder') }}">
-                                <h6 class="mb-0">Documents</h6>
-                                <p class="mb-0 text-secondary"> Files</p>
-                            </a>
-                        </div>
-                        <h6 class="text-primary mb-0">256 MB</h6>
+                        <h6 class="text-primary mb-0 text-center">{{ $imagesCount }} <br> <small>Photo</small></h6>
                     </div>
 
+                    <div class="d-flex align-items-center mt-3">
+                        <div class="fm-file-box bg-light-danger text-success"><i class='bx bx-music'></i>
+                        </div>
+                        <div class="flex-grow-1 ms-2">
+                            <a href="{{ route('odio.folder') }}">
+                                <h6 class="mb-0">Audio Files</h6>
+                                <p class="mb-0 text-secondary"> Files</p>
+                            </a>
+                        </div>
+                        <h6 class="text-primary mb-0 text-center">{{ $audiosCount }} <br> <small>Audio</small></h6>
+                    </div>
                     <div class="d-flex align-items-center mt-3">
                         <div class="fm-file-box bg-light-danger text-danger"><i class='bx bx-video'></i>
                         </div>
@@ -97,19 +98,21 @@
                                 <p class="mb-0 text-secondary"> Files</p>
                             </a>
                         </div>
-                        <h6 class="text-primary mb-0">3.4 GB</h6>
+                        <h6 class="text-primary mb-0 text-center">{{ $videosCount }} <br> <small>Video</small></h6>
                     </div>
+
                     <div class="d-flex align-items-center mt-3">
-                        <div class="fm-file-box bg-light-warning text-warning"><i class="bx bx-music me-2"></i>
+                        <div class="fm-file-box bg-light-success text-success"><i class='bx bxs-file-doc'></i>
                         </div>
-                        <a href="{{ route('odio.folder') }}">
-                            <div class="flex-grow-1 ms-2">
-                                <h6 class="mb-0">Audio Files</h6>
-                                <p class="mb-0 text-secondary"> files</p>
-                            </div>
-                        </a>
-                        <h6 class="text-primary mb-0">3 GB</h6>
+                        <div class="flex-grow-1 ms-2">
+                            <a href="{{ route('document.folder') }}">
+                                <h6 class="mb-0">Documents</h6>
+                                <p class="mb-0 text-secondary"> Files</p>
+                            </a>
+                        </div>
+                        <h6 class="text-primary mb-0 text-center">{{ $documentsCount }} <br><small>Documents</small></h6>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -189,7 +192,8 @@
                                         <td data-toggle="modal" data-target="#myModal" class="pointer">
                                             <div class="d-flex align-items-center">
                                                 <div>
-                                                    <i class="fadeIn animated bx bx-photo-album me-2 font-24 text-success"></i>
+                                                    <i
+                                                        class="fadeIn animated bx bx-photo-album me-2 font-24 text-success"></i>
                                                 </div>
                                                 <a href="#" class="font-weight-bold text-dark">
                                                     {{ $image->filename }}
@@ -199,13 +203,12 @@
 
                                             </div>
                                         </td>
-                                <?php
+                                        <?php
 
-                            //    $dynamicstring = "2490slkj409slk5409els";
-                            //     $newstring = some_function($dynamicstring);
-                            //     echo $newstring;
-
-                                ?>
+                                        //    $dynamicstring = "2490slkj409slk5409els";
+                                        //     $newstring = some_function($dynamicstring);
+                                        //     echo $newstring;
+                                        ?>
                                         {{-- <td>
                                             <div class="btn-group m-1" role="group" aria-label="Basic example">
 
@@ -243,7 +246,7 @@
                                                                 <div class="p-4 ">
                                                                     {{-- <img src="{{ asset('dashboard/assets/images/gallery/36.jpg') }}" class="rounded" width="100%" alt="not-found"> --}}
                                                                     <img src="{{ URL::asset("files/$image->filename") }}"
-                                                                        alt="no found" srcset="">
+                                                                        alt="no found">
                                                                 </div>
                                                                 <div class="d-flex justify-content-center">
                                                                     <button type="submit"
@@ -252,22 +255,35 @@
                                                                 </div>
                                                             </div>
 
-
                                                             <div class="col-md-6 edit_des">
                                                                 <div class="modal-body">
                                                                     <div class="card-body p-2">
                                                                         <div class="">
                                                                             <small class="fw-bold">Uploaded On: </small>
-                                                                                <span>{{ $image->created_at }}</span><br>
-                                                                            <small class="fw-bold">Uploaded To:</small><br>
-                                                                            <small class="fw-bold">Uploaded
-                                                                                By:</small><span>{{ $image->id }}</span><br>
+                                                                            <span>{{ $image->created_at }}</span><br>
+
+                                                                            <small class="fw-bold">Uploaded By:
+                                                                            </small><span>{{ Auth::user()->name }}</span><br>
+
                                                                             <small class="fw-bold">File Name:</small>
-                                                                                <br>
+                                                                            <span> {{ $image->filename }}</span><br>
+
                                                                             <small class="fw-bold">File Type: </small>
-                                                                                {{ substr($image->filename, -4 )}}</span><br>
-                                                                            <small class="fw-bold">File File
-                                                                                Size:</small><br>
+                                                                            <span>
+                                                                                {{ substr($image->filename, -4) }}</span><br>
+
+                                                                            <small class="fw-bold">File File Size:
+
+                                                                                {{-- {{ $image->filename }}
+                                                                                @php
+                                                                                $size = File::size(public_path("files/$image->filename")) / 1024;
+                                                                                $sizeFormatted = number_format($size, 2, '.');
+                                                                                @endphp
+
+                                                                                ( {{ $sizeFormatted }} KB) --}}
+
+                                                                            </small>
+                                                                            <br>
                                                                         </div>
                                                                         <hr>
                                                                     </div>
@@ -309,6 +325,14 @@
                                                                         <button type="submit"
                                                                             class="btn  btn-outline-dark">Description
                                                                             Update</button>
+                                                                        <span class="m-1"></span>
+                                                                        <form action="" method="post">
+                                                                            @csrf
+                                                                            @method('DELETE')
+                                                                            <a href="{{ route('testmultiple.destroy', $image->id) }}"
+                                                                                type="submit"
+                                                                                class="btn btn-outline-danger">Delete</a>
+                                                                        </form>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -339,40 +363,7 @@
             }
         </style>
 
-        <script>
-            @if (Session::has('message'))
-                toastr.options = {
-                    "closeButton": true,
-                    "progressBar": true
-                }
-                toastr.success("{{ session('message') }}");
-            @endif
-
-            @if (Session::has('error'))
-                toastr.options = {
-                    "closeButton": true,
-                    "progressBar": true
-                }
-                toastr.error("{{ session('error') }}");
-            @endif
-
-            @if (Session::has('info'))
-                toastr.options = {
-                    "closeButton": true,
-                    "progressBar": true
-                }
-                toastr.info("{{ session('info') }}");
-            @endif
-
-            @if (Session::has('warning'))
-                toastr.options = {
-                    "closeButton": true,
-                    "progressBar": true
-                }
-                toastr.warning("{{ session('warning') }}");
-            @endif
-        </script>
-
+        @section('footerScript')
         <script>
             $(document).ready(function() {
                 $.ajaxSetup({
@@ -381,80 +372,100 @@
                     }
                 });
 
-                $('#create-new-post').click(function() {
-                    $('#btn-save').val("create-post");
-                    $('#postForm').trigger("reset");
-                    $('#postCrudModal').html("Add New post");
-                    $('#ajax-crud-modal').modal('show');
-                });
+                // $('#gridlayout').click(function(){
+                //     alert('hi');
+                // });
 
-                $('body').on('click', '#edit-post', function() {
-                    var post_id = $(this).data('id');
-                    //   $.get('ajax-posts/'+post_id+'/edit', function (data) {
-                    $('#postCrudModal').html("Edit post");
-                    $('#btn-save').val("edit-post");
-                    $('#ajax-crud-modal').modal('show');
-                    $('#post_id').val(data.id);
-                    $('#title').val(data.title);
-                    $('#body').val(data.body);
-                })
+                 $.ajax({
+                    data: $('#gridlayout').serialize(),
+                    url: "/grid/layet",
+                    type: "POST",
+                // dataType: 'json',
+                success: function(data) {
+                    alert('hi');
+                },
+                error: function(data) {
+                    console.log('Error:', data);
+                    $('#btn-save').html('Save Changes');
+                }
             });
-            $('body').on('click', '.delete-post', function() {
-                var post_id = $(this).data("id");
-                confirm("Are You sure want to delete !");
-
-                $.ajax({
-                    type: "DELETE",
-                    url: "{{ url('ajax-posts') }}" + '/' + post_id,
-                    success: function(data) {
-                        $("#post_id_" + post_id).remove();
-                    },
-                    error: function(data) {
-                        console.log('Error:', data);
-                    }
-                });
-            });
-            //   });
-
-            if ($("#postForm").length > 0) {
-                $("#postForm").validate({
-
-                    submitHandler: function(form) {
-                        var actionType = $('#btn-save').val();
-                        $('#btn-save').html('Sending..');
-
-                        $.ajax({
-                            data: $('#postForm').serialize(),
-                            //   url: "",
-                            type: "POST",
-                            dataType: 'json',
-                            success: function(data) {
-                                var post = '<tr id="post_id_' + data.id + '"><td>' + data.id +
-                                    '</td><td>' + data.title + '</td><td>' + data.body + '</td>';
-                                post += '<td><a href="javascript:void(0)" id="edit-post" data-id="' +
-                                    data.id + '" class="btn btn-info">Edit</a></td>';
-                                post += '<td><a href="javascript:void(0)" id="delete-post" data-id="' +
-                                    data.id +
-                                    '" class="btn btn-danger delete-post">Delete</a></td></tr>';
 
 
-                                if (actionType == "create-post") {
-                                    $('#posts-crud').prepend(post);
-                                } else {
-                                    $("#post_id_" + data.id).replaceWith(post);
-                                }
+            //     $('#create-new-post').click(function() {
+            //         $('#btn-save').val("create-post");
+            //         $('#postForm').trigger("reset");
+            //         $('#postCrudModal').html("Add New post");
+            //         $('#ajax-crud-modal').modal('show');
+            //     });
 
-                                $('#postForm').trigger("reset");
-                                $('#ajax-crud-modal').modal('hide');
-                                $('#btn-save').html('Save Changes');
+            //     $('body').on('click', '#edit-post', function() {
+            //         var post_id = $(this).data('id');
+            //         //   $.get('ajax-posts/'+post_id+'/edit', function (data) {
+            //         $('#postCrudModal').html("Edit post");
+            //         $('#btn-save').val("edit-post");
+            //         $('#ajax-crud-modal').modal('show');
+            //         $('#post_id').val(data.id);
+            //         $('#title').val(data.title);
+            //         $('#body').val(data.body);
+            //     })
+            // });
+            // $('body').on('click', '.delete-post', function() {
+            //     var post_id = $(this).data("id");
+            //     confirm("Are You sure want to delete !");
 
-                            },
-                            error: function(data) {
-                                console.log('Error:', data);
-                                $('#btn-save').html('Save Changes');
-                            }
-                        });
-                    }
-                })
-            }
+            //     $.ajax({
+            //         type: "DELETE",
+            //         url: "{{ url('ajax-posts') }}" + '/' + post_id,
+            //         success: function(data) {
+            //             $("#post_id_" + post_id).remove();
+            //         },
+            //         error: function(data) {
+            //             console.log('Error:', data);
+            //         }
+            //     });
+            // });
+              });
+
+            // if ($("#postForm").length > 0) {
+            //     $("#postForm").validate({
+
+            //         submitHandler: function(form) {
+            //             var actionType = $('#btn-save').val();
+            //             $('#btn-save').html('Sending..');
+
+            //             $.ajax({
+            //                 data: $('#postForm').serialize(),
+            //                 //   url: "",
+            //                 type: "POST",
+            //                 dataType: 'json',
+            //                 success: function(data) {
+            //                     var post = '<tr id="post_id_' + data.id + '"><td>' + data.id +
+            //                         '</td><td>' + data.title + '</td><td>' + data.body + '</td>';
+            //                     post += '<td><a href="javascript:void(0)" id="edit-post" data-id="' +
+            //                         data.id + '" class="btn btn-info">Edit</a></td>';
+            //                     post += '<td><a href="javascript:void(0)" id="delete-post" data-id="' +
+            //                         data.id +
+            //                         '" class="btn btn-danger delete-post">Delete</a></td></tr>';
+
+
+            //                     if (actionType == "create-post") {
+            //                         $('#posts-crud').prepend(post);
+            //                     } else {
+            //                         $("#post_id_" + data.id).replaceWith(post);
+            //                     }
+
+            //                     $('#postForm').trigger("reset");
+            //                     $('#ajax-crud-modal').modal('hide');
+            //                     $('#btn-save').html('Save Changes');
+
+            //                 },
+            //                 error: function(data) {
+            //                     console.log('Error:', data);
+            //                     $('#btn-save').html('Save Changes');
+            //                 }
+            //             });
+            //         }
+            //     })
+            // }
         </script>
+        @endsection
