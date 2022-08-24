@@ -6,6 +6,7 @@ use App\Http\Controllers\EditController;
 use App\Http\Controllers\FolderController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LayeoutController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TestmultipleUploadController;
 
@@ -62,4 +63,4 @@ Route::get('/grid/layet', [LayeoutController::class, 'gridlayet'])->name('grid.l
 
 // Route::get('/edit', [EditController::class, 'edit'])->name('index.edit');
 
-
+Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');

@@ -69,12 +69,11 @@
                                 <p class="user-name mb-0">{{ Auth::user()->name }}</p>
                                 <p class="designattion mb-0">Available</p>
                             </div>
-                            <img src="assets/images/avatars/avatar-1.png" class="user-img" alt="">
+                            <img src="{{ URL::asset("new-folder/profile_photo.jpg") }}" class="user-img" alt="">
                         </div>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end">
-                        <a class="dropdown-item" href="javascript:;" data-toggle="modal"
-                            data-target="#exampleModalScrollable" id="btn1"><i
+                        <a class="dropdown-item" href="{{ route('profile') }}" id="btn1"><i
                                 class="bx bx-user"></i><span>Profile</span></a>
 
                         {{-- profile modal start --}}
@@ -150,11 +149,11 @@
 
     <div class="overlay toggle-btn-mobile"></div>
     <!--end overlay-->
-    <!--Start Back To Top Button--> <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
-    <!--End Back To Top Button-->
+    <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
+
     <!--footer -->
     <div class="footer">
-        <p class="mb-0">Luba {{ date('Y') }} | Developed By : <a href="#" target="_blank">luba</a>
+        <p class="mb-0">Luba 2022 | Developed By : <a href="#" target="_blank">luba</a>
         </p>
     </div>
     <!-- end footer -->
