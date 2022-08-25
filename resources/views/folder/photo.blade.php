@@ -15,7 +15,8 @@
     @foreach ($images as $image)
     <div class="col-lg-2 m-2 image_size">
         <div class="card-body text-center " >
-            <img class="image_size radius-10 border" src="{{ URL::asset("files/$image->filename")}}"  class="border" alt="" />
+            <img class="image_size radius-10 border" src="{{ URL::asset("files/$image->filename")->width()}}"  class="border" alt="" />
+
         </div>
     </div>
     @endforeach

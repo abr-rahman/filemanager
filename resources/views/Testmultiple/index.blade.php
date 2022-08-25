@@ -189,11 +189,10 @@
                             <tbody>
                                 @foreach ($images as $image)
                                     <tr>
-                                        <td data-toggle="modal" data-target="#myModal" class="pointer">
+                                        <td data-toggle="modal" data-target="#myModal-{{$image->id}}" class="pointer">
                                             <div class="d-flex align-items-center">
                                                 <div>
-                                                    <i
-                                                        class="fadeIn animated bx bx-photo-album me-2 font-24 text-success"></i>
+                                                    <i class="fadeIn animated bx bx-photo-album me-2 font-24 text-success"></i>
                                                 </div>
                                                 <a href="#" class="font-weight-bold text-dark">
                                                     {{ $image->filename }}
@@ -203,32 +202,9 @@
 
                                             </div>
                                         </td>
-                                        <?php
-
-                                        //    $dynamicstring = "2490slkj409slk5409els";
-                                        //     $newstring = some_function($dynamicstring);
-                                        //     echo $newstring;
-                                        ?>
-                                        {{-- <td>
-                                            <div class="btn-group m-1" role="group" aria-label="Basic example">
-
-                                                <a href="{{ route('testmultiple.edit', $testmulti->id) }}"
-                                                    class="btn-design  btn btn-outline-info"><i
-                                                        class="lni lni-syringe py-3"></i></a>
-
-                                                <form action="" method="post">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <a href="{{ route('testmultiple.destroy', $testmulti->id) }}"
-                                                        class="btn-design btn btn-outline-danger"><i
-                                                            class="fa-regular fa-trash-can fa-2x py-3"></i></a>
-                                                </form>
-
-                                            </div>
-                                        </td> --}}
 
                                         <div class="container">
-                                            <div class="modal modal-fullscreen-lg" id="myModal" role="dialog">
+                                            <div class="modal modal-fullscreen-lg" id="myModal-{{$image->id}}" role="dialog">
                                                 <div class="modal-dialog" style="max-width: 90%">
                                                     <div class="modal-content">
                                                         <div class="m-3" style="height:5px">
@@ -244,14 +220,13 @@
                                                         <div class="row">
                                                             <div class="col-md-6 ">
                                                                 <div class="p-4 ">
-                                                                    {{-- <img src="{{ asset('dashboard/assets/images/gallery/36.jpg') }}" class="rounded" width="100%" alt="not-found"> --}}
-                                                                    <img src="{{ URL::asset("files/$image->filename") }}"
+                                                                    <img src="{{ URL::asset("files/$image->filename") }}" style="width:535px;"
                                                                         alt="no found">
                                                                 </div>
-                                                                <div class="d-flex justify-content-center">
-                                                                    <button type="submit"
+                                                                <div class="d-flex justify-content-center mb-4">
+                                                                    <a href="{{ route('testmultiple.edit', $image->id) }}" type="submit"
                                                                         class="btn btn-outline-secondary">Change
-                                                                        Update</button>
+                                                                        Image</a>
                                                                 </div>
                                                             </div>
 
@@ -341,16 +316,13 @@
                                                 </div>
                                             </div>
                                         </div>
+
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
-
                         {{-- <button type="button" class="btn btn-primary" ></button> --}}
-
                         <!-- The Modal -->
-
-
                     </div>
                 </div>
             </div>
@@ -364,108 +336,108 @@
         </style>
 
         @section('footerScript')
-        <script>
-            $(document).ready(function() {
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
+            <script>
+                $(document).ready(function() {
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
+
+                    // $('#gridlayout').click(function(){
+                    //     alert('hi');
+                    // });
+
+                    $.ajax({
+                        data: $('#gridlayout').serialize(),
+                        url: "/grid/layet",
+                        type: "POST",
+                        // dataType: 'json',
+                        success: function(data) {
+                            alert('hi');
+                        },
+                        error: function(data) {
+                            console.log('Error:', data);
+                            $('#btn-save').html('Save Changes');
+                        }
+                    });
+
+
+                    //     $('#create-new-post').click(function() {
+                    //         $('#btn-save').val("create-post");
+                    //         $('#postForm').trigger("reset");
+                    //         $('#postCrudModal').html("Add New post");
+                    //         $('#ajax-crud-modal').modal('show');
+                    //     });
+
+                    //     $('body').on('click', '#edit-post', function() {
+                    //         var post_id = $(this).data('id');
+                    //         //   $.get('ajax-posts/'+post_id+'/edit', function (data) {
+                    //         $('#postCrudModal').html("Edit post");
+                    //         $('#btn-save').val("edit-post");
+                    //         $('#ajax-crud-modal').modal('show');
+                    //         $('#post_id').val(data.id);
+                    //         $('#title').val(data.title);
+                    //         $('#body').val(data.body);
+                    //     })
+                    // });
+                    // $('body').on('click', '.delete-post', function() {
+                    //     var post_id = $(this).data("id");
+                    //     confirm("Are You sure want to delete !");
+
+                    //     $.ajax({
+                    //         type: "DELETE",
+                    //         url: "{{ url('ajax-posts') }}" + '/' + post_id,
+                    //         success: function(data) {
+                    //             $("#post_id_" + post_id).remove();
+                    //         },
+                    //         error: function(data) {
+                    //             console.log('Error:', data);
+                    //         }
+                    //     });
+                    // });
                 });
 
-                // $('#gridlayout').click(function(){
-                //     alert('hi');
-                // });
+                // if ($("#postForm").length > 0) {
+                //     $("#postForm").validate({
 
-                 $.ajax({
-                    data: $('#gridlayout').serialize(),
-                    url: "/grid/layet",
-                    type: "POST",
-                // dataType: 'json',
-                success: function(data) {
-                    alert('hi');
-                },
-                error: function(data) {
-                    console.log('Error:', data);
-                    $('#btn-save').html('Save Changes');
-                }
-            });
+                //         submitHandler: function(form) {
+                //             var actionType = $('#btn-save').val();
+                //             $('#btn-save').html('Sending..');
 
-
-            //     $('#create-new-post').click(function() {
-            //         $('#btn-save').val("create-post");
-            //         $('#postForm').trigger("reset");
-            //         $('#postCrudModal').html("Add New post");
-            //         $('#ajax-crud-modal').modal('show');
-            //     });
-
-            //     $('body').on('click', '#edit-post', function() {
-            //         var post_id = $(this).data('id');
-            //         //   $.get('ajax-posts/'+post_id+'/edit', function (data) {
-            //         $('#postCrudModal').html("Edit post");
-            //         $('#btn-save').val("edit-post");
-            //         $('#ajax-crud-modal').modal('show');
-            //         $('#post_id').val(data.id);
-            //         $('#title').val(data.title);
-            //         $('#body').val(data.body);
-            //     })
-            // });
-            // $('body').on('click', '.delete-post', function() {
-            //     var post_id = $(this).data("id");
-            //     confirm("Are You sure want to delete !");
-
-            //     $.ajax({
-            //         type: "DELETE",
-            //         url: "{{ url('ajax-posts') }}" + '/' + post_id,
-            //         success: function(data) {
-            //             $("#post_id_" + post_id).remove();
-            //         },
-            //         error: function(data) {
-            //             console.log('Error:', data);
-            //         }
-            //     });
-            // });
-              });
-
-            // if ($("#postForm").length > 0) {
-            //     $("#postForm").validate({
-
-            //         submitHandler: function(form) {
-            //             var actionType = $('#btn-save').val();
-            //             $('#btn-save').html('Sending..');
-
-            //             $.ajax({
-            //                 data: $('#postForm').serialize(),
-            //                 //   url: "",
-            //                 type: "POST",
-            //                 dataType: 'json',
-            //                 success: function(data) {
-            //                     var post = '<tr id="post_id_' + data.id + '"><td>' + data.id +
-            //                         '</td><td>' + data.title + '</td><td>' + data.body + '</td>';
-            //                     post += '<td><a href="javascript:void(0)" id="edit-post" data-id="' +
-            //                         data.id + '" class="btn btn-info">Edit</a></td>';
-            //                     post += '<td><a href="javascript:void(0)" id="delete-post" data-id="' +
-            //                         data.id +
-            //                         '" class="btn btn-danger delete-post">Delete</a></td></tr>';
+                //             $.ajax({
+                //                 data: $('#postForm').serialize(),
+                //                 //   url: "",
+                //                 type: "POST",
+                //                 dataType: 'json',
+                //                 success: function(data) {
+                //                     var post = '<tr id="post_id_' + data.id + '"><td>' + data.id +
+                //                         '</td><td>' + data.title + '</td><td>' + data.body + '</td>';
+                //                     post += '<td><a href="javascript:void(0)" id="edit-post" data-id="' +
+                //                         data.id + '" class="btn btn-info">Edit</a></td>';
+                //                     post += '<td><a href="javascript:void(0)" id="delete-post" data-id="' +
+                //                         data.id +
+                //                         '" class="btn btn-danger delete-post">Delete</a></td></tr>';
 
 
-            //                     if (actionType == "create-post") {
-            //                         $('#posts-crud').prepend(post);
-            //                     } else {
-            //                         $("#post_id_" + data.id).replaceWith(post);
-            //                     }
+                //                     if (actionType == "create-post") {
+                //                         $('#posts-crud').prepend(post);
+                //                     } else {
+                //                         $("#post_id_" + data.id).replaceWith(post);
+                //                     }
 
-            //                     $('#postForm').trigger("reset");
-            //                     $('#ajax-crud-modal').modal('hide');
-            //                     $('#btn-save').html('Save Changes');
+                //                     $('#postForm').trigger("reset");
+                //                     $('#ajax-crud-modal').modal('hide');
+                //                     $('#btn-save').html('Save Changes');
 
-            //                 },
-            //                 error: function(data) {
-            //                     console.log('Error:', data);
-            //                     $('#btn-save').html('Save Changes');
-            //                 }
-            //             });
-            //         }
-            //     })
-            // }
-        </script>
+                //                 },
+                //                 error: function(data) {
+                //                     console.log('Error:', data);
+                //                     $('#btn-save').html('Save Changes');
+                //                 }
+                //             });
+                //         }
+                //     })
+                // }
+            </script>
         @endsection
