@@ -35,7 +35,7 @@ class RegisterController extends Controller
 
         $request->session()->flush();
         Auth::logout();
-        return redirect('auth/logout');
+        return redirect('auth/login');
 
     }
 

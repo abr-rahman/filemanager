@@ -68,7 +68,7 @@
                                         <p class="user-name mb-0">{{ Auth::user()->name }}</p>
                                         <p class="designattion mb-0">Available</p>
                                     </div>
-                                    <img src="{{ URL::asset('new-folder/profile_photo.jpg') }}" class="user-img"
+                                    <img src="{{ URL::asset('uploads/profile_photo/profile_photo.jpg') }}" class="user-img"
                                         alt="">
                                 </div>
                             </a>
@@ -111,28 +111,6 @@
     </nav>
     </header>
 
-    @guest
-        @if (Route::has('login'))
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-            </li>
-        @endif
-
-        @if (Route::has('register'))
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-            </li>
-        @endif
-    @else
-        <a class="dropdown-item" href="{{ route('auth.logout') }}"
-            onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
-                class="bx bx-power-off"></i><span>Logout</span></a>
-
-        <form id="logout-form" action="{{ route('auth.logout') }}" method="POST" class="d-none">
-            @csrf
-        </form>
-
-    @endguest
     <!--end header-->
     <!--page-wrapper-->
     <div class="page-wrapper">

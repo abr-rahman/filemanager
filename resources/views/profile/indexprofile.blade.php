@@ -12,8 +12,7 @@
 											</div>
 											<div class="ms-md-4 flex-grow-1">
 												<div class="d-flex align-items-center mb-1">
-													<h4 class="mb-0">Michle Clark</h4>
-													<p class="mb-0 ms-auto">$44/hr</p>
+													<h4 class="mb-0">{{ Auth::user()->name }}</h4>
 												</div>
 												<p class="mb-0 text-muted">Sr. Web Developer</p>
 												<p class="text-primary"><i class='bx bx-buildings'></i> Epic Coders</p>
@@ -27,13 +26,9 @@
 											<tbody>
 												<tr>
 													<th>Availability:</th>
-													<td>Full-time (40hr/wk) <span class="badge badge-success">available</span>
-													</td>
+													<td>Full-time</td>
 												</tr>
-												<tr>
-													<th>Age:</th>
-													<td>27</td>
-												</tr>
+
 												<tr>
 													<th>Location:</th>
 													<td>Sankt, Petersburg, Russia</td>
@@ -41,7 +36,7 @@
 												<tr>
 													<th>Years experience:</th>
 													<td>6</td>
-												</tr>
+									`			</tr>
 											</tbody>
 										</table>
 										<div class="mb-3 mb-lg-0">
@@ -56,15 +51,15 @@
 								</div>
 								<!--end row-->
 								<ul class="nav nav-pills">
-									<li class="nav-item"> <a class="nav-link active" data-bs-toggle="tab" href="#Experience"><span class="p-tab-name">Experience</span><i class='bx bx-donate-blood font-24 d-sm-none'></i></a>
+									{{-- <li class="nav-item"> <a class="nav-link active" data-bs-toggle="tab" href="#Experience"><span class="p-tab-name">Experience</span><i class='bx bx-donate-blood font-24 d-sm-none'></i></a>
 									</li>
 									<li class="nav-item"> <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#Biography"><span class="p-tab-name">Biography</span><i class='bx bxs-user-rectangle font-24 d-sm-none'></i></a>
-									</li>
-									<li class="nav-item"> <a class="nav-link" data-bs-toggle="tab" href="#Edit-Profile"><span class="p-tab-name">Edit Profile</span><i class='bx bx-message-edit font-24 d-sm-none'></i></a>
+									</li> --}}
+									<li class="nav-item"> <a class="nav-link active" data-bs-toggle="tab" href="#Edit-Profile"><span class="p-tab-name">Edit Profile</span><i class='bx bx-message-edit font-24 d-sm-none'></i></a>
 									</li>
 								</ul>
 								<div class="tab-content mt-3">
-									<div class="tab-pane fade show active" id="Experience">
+									{{-- <div class="tab-pane fade show active" id="Experience">
 										<div class="card shadow-none border mb-0 radius-15">
 											<div class="card-body">
 												<div class="d-sm-flex align-items-center mb-3">
@@ -194,8 +189,8 @@
 												</div>
 											</div>
 										</div>
-									</div>
-									<div class="tab-pane fade" id="Edit-Profile">
+									</div> --}}
+									<div class="tab-pane fade show active" id="Edit-Profile">
 										<div class="card shadow-none border mb-0 radius-15">
 											<div class="card-body">
 												<div class="form-body">
@@ -203,14 +198,18 @@
 														<div class="col-12 col-lg-5 border-right">
 															<form class="row g-3">
 																<div class="col-6">
-																	<label class="form-label">First Name</label>
+																	<label class="form-label">Name</label>
 																	<input type="text" value="Svetlana" class="form-control">
 																</div>
-																<div class="col-6">
-																	<label class="form-label">Last Name</label>
-																	<input type="text" value="Anyukova" class="form-control">
+                                                                <div class="col-6">
+																	<label class="form-label">Profile</label>
+																    <input type="file" value="" class="form-control">
 																</div>
-																<div class="col-12">
+																<div class="col-6">
+																	<label class="form-label">Old Password</label>
+																    <input type="password" value="634560000" class="form-control">
+																</div>
+																<div class="col-6">
 																	<label class="form-label">Password</label>
 																    <input type="password" value="1234560000" class="form-control">
 																</div>
@@ -218,150 +217,32 @@
 																	<label class="form-label">Email</label>
 																    <input type="text" value="svetlana1997@example.com" class="form-control">
 																</div>
-																<div class="col-12">
-																	<label class="form-label">Phone</label>
-																    <input type="text" value="99-10-XXX-XXX" class="form-control">
-																</div>
-																<div class="col-12">
-																	<label class="form-label">Address</label>
-																    <input type="text" value="116-B, Cutela Colony, Sydney, Australia" class="form-control">
-																</div>
-																<div class="col-12">
-																	<label class="form-label">Nation</label>
-																    <input type="text" value="Australia" class="form-control">
-																</div>
+
 															</form>
 														</div>
 														<div class="col-12 col-lg-7">
 															<form class="row g-3">
-																<div class="col-12">
-																	<label class="form-label">Gender</label>
-																	<select class="form-control">
-																		<option>Male</option>
-																		<option>Female</option>
-																		<option>Other</option>
-																	</select>
+																<div class="col-6">
+																	<label class="form-label">Phone</label>
+																    <input type="text" value="99-10-XXX-XXX" class="form-control">
 																</div>
-																<div class="col-12">
-																	<label class="form-label">Language</label>
-																	<select class="form-control">
-																		<option>English</option>
-																		<option>German</option>
-																		<option>French</option>
-																	</select>
+																<div class="col-6">
+                                                                    <label class="form-label">Date of Birth</label>
+                                                                    <input type="date" class="form-control">
 																</div>
-																<div class="col-12">
-																	<p class="mb-0">Date of Birth</p>
-																</div>
-																<div class="col-12 col-lg-4">
-																	<select class="form-control">
-																		<option>January</option>
-																		<option>February</option>
-																		<option selected>March</option>
-																		<option>April</option>
-																		<option>May</option>
-																		<option>June</option>
-																		<option>July</option>
-																		<option>August</option>
-																		<option>September</option>
-																		<option>October</option>
-																		<option>November</option>
-																		<option>December</option>
-																	</select>
-																</div>
-																<div class="col-12 col-lg-4">
-																	<select class="form-control">
-																		<option>01</option>
-																		<option>02</option>
-																		<option>03</option>
-																		<option>04</option>
-																		<option>05</option>
-																		<option>06</option>
-																		<option>07</option>
-																		<option>08</option>
-																		<option>09</option>
-																		<option selected>10</option>
-																		<option>11</option>
-																		<option>12</option>
-																		<option>13</option>
-																		<option>14</option>
-																		<option>15</option>
-																		<option>16</option>
-																		<option>17</option>
-																		<option>18</option>
-																		<option>19</option>
-																		<option>20</option>
-																		<option>21</option>
-																		<option>22</option>
-																		<option>23</option>
-																		<option>24</option>
-																		<option>25</option>
-																		<option>26</option>
-																		<option>27</option>
-																		<option>28</option>
-																		<option>29</option>
-																		<option>30</option>
-																		<option>31</option>
-																	</select>
-																</div>
-																<div class="col-12 col-lg-4">
-																	<select class="form-control">
-																		<option>1990</option>
-																		<option>1991</option>
-																		<option>1992</option>
-																		<option selected>1993</option>
-																		<option>1994</option>
-																	</select>
-																</div>
-																<div class="col-12">
+
+																<div class="col-6">
 																	<label class="form-label">Twitter</label>
 																	<input type="text" class="form-control" value="https://twitter.com/anyukova">
 																</div>
-																<div class="col-12">
-																	<label class="form-label">Linked In</label>
-																	<input type="text" class="form-control" value="https://www.linkedin.com/anyukova/">
-																</div>
-																<div class="col-12">
+
+																<div class="col-6">
 																	<label class="form-label">Facebook</label>
 																	<input type="text" class="form-control" value="https://www.facebook.com/anyukova">
 																</div>
-																<div class="col-12">
-																	<label class="form-label">Dribbble</label>
-																	<input type="text" class="form-control" value="https://dribbble.com/anyukova/">
-																</div>
-																<div class="col-12">
-																	<label class="form-label">Slogan</label>
-																    <input type="text" class="form-control" value="Land Acquisition Specialist">
-																</div>
-																<div class="col-12 col-lg-6">
-																	<div class="card shadow-none border mb-3 mb-md-0">
-																		<div class="card-body">
-																			<div class="d-flex align-items-center">
-																				<img src="assets/images/icons/credit-card-visa.png" width="50" alt="">
-																				<div class="ms-2">
-																					<h6 class="mb-0">Visa...8759</h6>
-																					<p class="mb-0">Expires 06/21</p>
-																				</div>
-																			</div>
-																		</div>
-																		<div class="card-footer bg-transparent text-right"> <a href="javascript:;" class="text-danger">REMOVE</a>
-																		</div>
-																	</div>
-																</div>
-																<div class="col-12 col-lg-6">
-																	<div class="card shadow-none border mb-0">
-																		<div class="card-body">
-																			<div class="d-flex align-items-center">
-																				<img src="assets/images/icons/mastercard-2.png" width="50" alt="">
-																				<div class="ms-2">
-																					<h6 class="mb-0">Master...8314</h6>
-																					<p class="mb-0">Expires 08/24</p>
-																				</div>
-																			</div>
-																		</div>
-																		<div class="card-footer bg-transparent text-right"> <a href="javascript:;" class="text-danger">REMOVE</a>
-																		</div>
-																	</div>
+                                                                <div class="col-12">
+																	<label class="form-label">Address</label>
+																    <input type="text" value="116-B, Cutela Colony, Sydney, Australia" class="form-control">
 																</div>
 															</form>
 														</div>
