@@ -50,65 +50,65 @@
         </div>
         <!--end sidebar-wrapper-->
         <!--header-->
-    <header class="top-header">
-        <nav class="navbar navbar-expand">
+        <header class="top-header">
+            <nav class="navbar navbar-expand">
 
-        <div class="flex-grow-1 search-bar">
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="search" />
-                <button class="btn btn-search" type="button"><i class="lni lni-search-alt"></i></button>
-            </div>
-        </div>
-        <div class="right-topbar ms-auto">
-            <ul class="navbar-nav">
-                <li class="nav-item dropdown dropdown-user-profile">
-                    <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;"
-                        data-bs-toggle="dropdown">
-                        <div class="d-flex user-box align-items-center">
-                            <div class="user-info">
-                                <p class="user-name mb-0">{{ Auth::user()->name }}</p>
-                                <p class="designattion mb-0">Available</p>
-                            </div>
-                            <img src="{{ URL::asset("new-folder/profile_photo.jpg") }}" class="user-img" alt="">
-                        </div>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-end">
-                        <a class="dropdown-item" href="{{ route('profile') }}" id="btn1"><i
-                                class="bx bx-user"></i><span>Profile</span></a>
+                <div class="flex-grow-1 search-bar">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="search" />
+                        <button class="btn btn-search" type="button"><i class="lni lni-search-alt"></i></button>
+                    </div>
+                </div>
+                <div class="right-topbar ms-auto">
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown dropdown-user-profile">
+                            <a class="nav-link dropdown-toggle-nocaret" data-bs-toggle="dropdown">
+                                <div class="d-flex user-box align-items-center">
+                                    <div class="user-info">
+                                        <p class="user-name mb-0">{{ Auth::user()->name }}</p>
+                                        <p class="designattion mb-0">Available</p>
+                                    </div>
+                                    <img src="{{ URL::asset('new-folder/profile_photo.jpg') }}" class="user-img"
+                                        alt="">
+                                </div>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <a class="dropdown-item" href="{{ route('profile') }}" id="btn1"><i
+                                        class="bx bx-user"></i><span>Profile</span></a>
 
-                        {{-- profile modal start --}}
+                                {{-- profile modal start --}}
 
 
-                        {{-- profile modal end --}}
-                        <div class="dropdown-divider mb-0"></div>
-                        @guest
-                            @if (Route::has('login'))
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                    </li>
-                    @endif
+                                {{-- profile modal end --}}
+                                <div class="dropdown-divider mb-0"></div>
+                                @guest
+                                    @if (Route::has('login'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            </li>
+                            @endif
 
-                    @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                        </li>
-                    @endif
-                    @else
-                        <a class="dropdown-item" href="{{ route('auth.logout') }}"
-                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
-                                class="bx bx-power-off"></i><span>Logout</span></a>
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
+                            @endif
+                        @else
+                            <a class="dropdown-item" href="{{ route('auth.logout') }}"
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
+                                    class="bx bx-power-off"></i><span>Logout</span></a>
 
-                        <form id="logout-form" action="{{ route('auth.logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
+                            <form id="logout-form" action="{{ route('auth.logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
 
-                    @endguest
-        </div>
-        </li>
+                        @endguest
+                </div>
+                </li>
 
-        </ul>
-        </div>
-        </nav>
+                </ul>
+    </div>
+    </nav>
     </header>
 
     @guest
@@ -138,7 +138,7 @@
     <div class="page-wrapper">
         <!--page-content-wrapper-->
         <div class="page-content-wrapper">
-            <div class="page-content">
+            <div class="page-content" style="padding: 0rem 0rem 0rem 1rem;">
 
                 @yield('content')
 

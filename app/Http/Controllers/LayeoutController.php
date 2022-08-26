@@ -10,7 +10,6 @@ class LayeoutController extends Controller
     public function gridlayet(){
         $testmultiples = TestmultipleUpload::all();
 
-        // $count = TestmultipleUpload::where('id', $id);
 
         $audios = [];
         $videos = [];
@@ -18,6 +17,7 @@ class LayeoutController extends Controller
         $documents = [];
 
         foreach ($testmultiples as $item) {
+
             $fileName = $item->filename;
 
             $array = explode('.', $fileName);
@@ -41,12 +41,12 @@ class LayeoutController extends Controller
             }
         }
 
-        $images = count($images);
-        $videos = count($videos);
-        $audios = count($audios);
-        $documents = count($documents);
+        $imagesCount = count($images);
+        $videosCount = count($videos);
+        $audiosCount = count($audios);
+        $documentsCount = count($documents);
 
-        return view('grid.index', compact('testmultiples', 'audios', 'videos', 'images', 'documents'));
+        return view('grid.index', compact('testmultiples', 'audios', 'videos', 'images', 'documents', 'imagesCount', 'videosCount', 'audiosCount', 'documentsCount'));
     }
 }
 

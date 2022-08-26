@@ -24,13 +24,12 @@
                 </ol>
             </nav>
         </div>
+
         <div class="ms-auto">
-            <div class="btn-group">
-                {{-- <a href="{{ route('grid.layout') }}" id="gridlayout" type="button" class="btn btn-primary"><i class="lni lni-grid-alt"></i> --}}
-                <a id="gridlayout" type="button" class="btn btn-primary"><i class="lni lni-grid-alt"></i>
-                    Grid</a>
-            </div>
+        <div class="btn-group">
+            <a href="{{ url('/grid/layet') }}" type="button" class="btn btn-primary"><i class="lni lni-grid-alt"></i> Grid</a>
         </div>
+    </div>
     </div>
     {{-- <!--end breadcrumb--> --}}
     <div class="row">
@@ -348,20 +347,23 @@
                     //     alert('hi');
                     // });
 
-                    $.ajax({
-                        data: $('#gridlayout').serialize(),
-                        url: "/grid/layet",
-                        type: "POST",
-                        // dataType: 'json',
-                        success: function(data) {
-                            alert('hi');
-                        },
-                        error: function(data) {
-                            console.log('Error:', data);
-                            $('#btn-save').html('Save Changes');
-                        }
-                    });
-
+                //    $.ajax({
+                        // type: "POST",
+                        // url: "{{ url('/grid/layet')}}",
+                        // data: {
+                        //     title: title,
+                        //     author: author,
+                        //     _token: _token
+                        // },
+                        // success: function(response) {
+                        //     alert('ok');
+                            // if (response) {
+                            //     $("#bookForm")[0].reset();
+                            //     $('#tbody').load(document.URL +  ' #tbody');
+                            //     $("#addmodel").modal("hide");
+                            // }
+                        // }
+                    // });
 
                     //     $('#create-new-post').click(function() {
                     //         $('#btn-save').val("create-post");

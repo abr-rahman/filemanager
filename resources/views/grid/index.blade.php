@@ -25,7 +25,7 @@
     </div>
     <div class="ms-auto">
         <div class="btn-group">
-            <a href="{{ url('/home') }}" type="button" class="btn btn-primary"><i class="lni lni-grid-alt"></i> List</a>
+            <a href="{{ url('/home') }}" type="button" class="btn btn-primary"><i class="lni lni-list-alt"></i> List</a>
         </div>
     </div>
 </div>
@@ -64,7 +64,7 @@
                     <div class="flex-grow-1 ms-2">
                         <a href="{{ route('photo.folder') }}">
                             <h6 class="mb-0">Images</h6>
-                            <p class="mb-0 text-secondary">{{ $images }} Files</p>
+                            <p class="mb-0 text-secondary">{{ $imagesCount }} Files</p>
                         </a>
                     </div>
                     <h6 class="text-primary mb-0">15.3 GB</h6>
@@ -75,7 +75,7 @@
                     <div class="flex-grow-1 ms-2">
                         <a href="{{ route('document.folder') }}">
                             <h6 class="mb-0">Documents</h6>
-                            <p class="mb-0 text-secondary">{{ $documents}} Files</p>
+                            <p class="mb-0 text-secondary">{{ $documentsCount}} Files</p>
                         </a>
                     </div>
                     <h6 class="text-primary mb-0">256 MB</h6>
@@ -87,7 +87,7 @@
                     <div class="flex-grow-1 ms-2">
                         <a href="{{ route('video.folder') }}">
                             <h6 class="mb-0">Media Files</h6>
-                            <p class="mb-0 text-secondary">{{ $videos}} Files</p>
+                            <p class="mb-0 text-secondary">{{ $videosCount}} Files</p>
                         </a>
                     </div>
                     <h6 class="text-primary mb-0">3.4 GB</h6>
@@ -98,7 +98,7 @@
                     <a href="{{ route('odio.folder') }}">
                         <div class="flex-grow-1 ms-2">
                             <h6 class="mb-0">Audio Files</h6>
-                            <p class="mb-0 text-secondary">{{ $audios}} files</p>
+                            <p class="mb-0 text-secondary">{{ $audiosCount}} files</p>
                         </div>
                     </a>
                     <h6 class="text-primary mb-0">3 GB</h6>
@@ -119,7 +119,7 @@
                                         </div>
                                     </div>
                                     <h6 class="mb-0 text-primary">Image</h6>
-                                    <small>{{ $images }} Files</small>
+                                    <small>{{ $imagesCount }} Files</small>
                                 </div>
                             </a>
                         </div>
@@ -133,7 +133,7 @@
                                         </div>
                                     </div>
                                     <h6 class="mb-0 text-primary">Video</h6>
-                                    <small>{{ $videos}} Files</small>
+                                    <small>{{ $videosCount}} Files</small>
                                 </div>
                             </a>
                         </div>
@@ -147,7 +147,7 @@
                                         </div>
                                     </div>
                                     <h6 class="mb-0 text-primary">Audio</h6>
-                                    <small>{{ $audios}} Files</small>
+                                    <small>{{ $audiosCount}} Files</small>
                                 </div>
                             </a>
                         </div>
@@ -161,7 +161,7 @@
                                         </div>
                                     </div>
                                     <h6 class="mb-0 text-primary">Document</h6>
-                                    <small>{{ $documents}} Files</small>
+                                    <small>{{ $documentsCount}} Files</small>
                                 </div>
                             </a>
                         </div>
@@ -171,13 +171,14 @@
                 <!--end row-->
 
                 <div class="row">
-                     @foreach ($testmultiples as $testmulti)
+                     @foreach ($images as $image)
                             <div class="col-lg-2 m-2 ">
-                                <div class="card-body text-center " style="width: 100%; content-visibility: auto; height: 200px; position: relative;">
-                                  <iframe id="Iframe1" src="{{ URL::asset("files/$testmulti->filename")}}" title="wow"><img style="width: 66%;" src="" alt=""></iframe>
-                                  {{-- <a href=" {{ URL::asset("files/$testmulti->filename") }}" class="font-weight-bold text-dark"  target="_blank">{{ $testmulti->filename }}</a> --}}
+                                <div class="card-body text-center">
 
-                            </div>
+                                  {{-- <a href=" " class="font-weight-bold text-dark"  target="_blank">{{ $image->filename }}</a> --}}
+                                  <img src="{{ URL::asset("files/$image->filename") }}" alt="" class="m-2" style="width:200px; height:200px;" >
+
+                                </div>
                             </div>
                     @endforeach
 
@@ -196,8 +197,4 @@
     }
 </style>
 
-<script>
-    $("#Iframe1").contents().find("img").css({
-    'width': '65px !important'
-    });
-</script>
+
