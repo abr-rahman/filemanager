@@ -77,17 +77,15 @@ class TestmultipleUploadController extends Controller
             $file->save();
         }
 
-        return redirect('home')->with('message', 'Data added Successfully');
+        return back()->with('success', 'Data added Successfully');
 
-        // return redirect('home')->with('success', 'Your files added successfully!');
     }
 
     public function edit(TestmultipleUpload $testmultipleUpload, $id)
     {
-        $testmultiples = TestmultipleUpload::find($id);
+    $testmultiples = TestmultipleUpload::find($id);
         return view('Testmultiple.edit', compact('testmultiples'));
     }
-
 
     public function update(Request $request, $id)
     {
@@ -97,12 +95,12 @@ class TestmultipleUploadController extends Controller
 
         $testmultiple = TestmultipleUpload::find($id);
         if ($request->hasFile('filename')) {
+
             // Delelte old file
             $oldFile = public_path('files/') . $testmultiple->filename;
             if (isset($oldFile) && !empty($oldFile)) {
                 unlink($oldFile);
             }
-
             $upload = $request->file('filename');
             if ($request->hasfile('filename')) {
                 $name = $upload->getClientOriginalName();
@@ -111,6 +109,20 @@ class TestmultipleUploadController extends Controller
             }
         }
         $testmultiple->save();
+        return redirect('home')->with('success', 'Your files updated successfully!');
+    }
+
+    public function updateDescription(Request $request, $id)
+    {
+        $updateDes = TestmultipleUpload::find($id);
+        $updateDes->alternative = $request->alternative;
+        $updateDes->title = $request->title;
+        $updateDes->caption = $request->caption;
+        $updateDes->description = $request->description;
+        $updateDes->url = $request->url;
+
+        $updateDes->update();
+
         return redirect('home')->with('success', 'Your files updated successfully!');
     }
 

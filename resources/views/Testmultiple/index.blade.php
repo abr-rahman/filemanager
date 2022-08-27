@@ -261,12 +261,14 @@
                                                                         </div>
                                                                         <hr>
                                                                     </div>
+                                                                <form action="{{ route('update.image.description', $image->id) }}" method="post" enctype="multipart/form-data">
+                                                                    @csrf
                                                                     <div class="md-form mb-3">
                                                                         <div class="input-group">
                                                                             <span
                                                                                 class="input-group-text edit_input">Alternative
                                                                                 Text</span>
-                                                                            <input type="text" aria-label="First name"
+                                                                            <input type="text" name="alternative" aria-label="First name" value="{{ $image->alternative }}"
                                                                                 class="form-control">
                                                                         </div>
                                                                     </div>
@@ -274,7 +276,7 @@
                                                                         <div class="input-group">
                                                                             <span
                                                                                 class="input-group-text edit_input">Title</span>
-                                                                            <input type="text" aria-label="First name"
+                                                                            <input type="text" name="title" aria-label="First name" value="{{ $image->title }}"
                                                                                 class="form-control">
                                                                         </div>
                                                                     </div>
@@ -282,32 +284,39 @@
                                                                         <div class="input-group">
                                                                             <span
                                                                                 class="input-group-text edit_input">Caption</span>
-                                                                            <textarea name="" class="form-control" rows="2"></textarea>
+                                                                            <textarea name="caption" class="form-control" rows="2">{{ $image->caption }}</textarea>
                                                                         </div>
                                                                     </div>
                                                                     <div class="md-form mb-3">
                                                                         <div class="input-group">
                                                                             <span
                                                                                 class="input-group-text edit_input">Description</span>
-                                                                            <textarea name="" class="form-control" rows="2"></textarea>
+                                                                            <textarea name="description" class="form-control" rows="2">{{ $image->description }}</textarea>
                                                                         </div>
                                                                     </div>
-
+                                                                    <div class="md-form mb-3">
+                                                                        <div class="input-group">
+                                                                            <span
+                                                                                class="input-group-text edit_input">Image Url</span>
+                                                                            <input type="text" name="url" class="form-control" value="{{ $image->url }}">
+                                                                        </div>
+                                                                    </div>
 
 
                                                                     <div class="d-flex justify-content-center">
                                                                         <button type="submit"
                                                                             class="btn  btn-outline-dark">Description
                                                                             Update</button>
-                                                                        <span class="m-1"></span>
-                                                                        <form action="" method="post">
+
+                                                                    </div>
+                                                                </form>
+                                                                        <form action="" method="post" class="float-end" style="margin-top: -58px !important;">
                                                                             @csrf
                                                                             @method('DELETE')
                                                                             <a href="{{ route('testmultiple.destroy', $image->id) }}"
                                                                                 type="submit"
                                                                                 class="btn btn-outline-danger">Delete</a>
                                                                         </form>
-                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>

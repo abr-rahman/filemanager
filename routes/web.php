@@ -32,11 +32,11 @@ Auth::routes([
 
 // Route::get('home', [HomeController::class, 'index']);
 
-Route::get('auth/register', [RegisterController::class, 'register']);
+Route::get('/register', [RegisterController::class, 'register']);
 Route::post('/auth/register/store', [RegisterController::class, 'registerstore'])->name('auth.register.store');
 
 Route::post('/auth/login/store', [RegisterController::class, 'loginstore'])->name('auth.login.store');
-Route::get('/auth/login', [RegisterController::class, 'authlogin'])->name('auth.login');
+Route::get('/login', [RegisterController::class, 'authlogin'])->name('auth.login');
 
 Route::group(['middleware' => 'auth'], function(){
 
@@ -48,7 +48,11 @@ Route::group(['middleware' => 'auth'], function(){
 Route::get('testmultiple/create', [TestmultipleUploadController::class, 'create'])->name('testmultiple.create');
 Route::post('testmultiple/store', [TestmultipleUploadController::class, 'store'])->name('testmultiple.store');
 Route::get('testmultiple/edit/{id}', [TestmultipleUploadController::class, 'edit'])->name('testmultiple.edit');
+
 Route::post('testmultiple/update/{id}', [TestmultipleUploadController::class, 'update'])->name('testmultiple.update');
+Route::post('/img/des/update/{id}', [TestmultipleUploadController::class, 'updateDescription'])->name('update.image.description');
+
+
 Route::get('testmultiple/destroy/{id}', [TestmultipleUploadController::class, 'destroy'])->name('testmultiple.destroy');
 Route::get('testmultiple/show', [TestmultipleUploadController::class, 'show']);
 
@@ -66,3 +70,6 @@ Route::get('/grid/layet', [LayeoutController::class, 'gridlayet'])->name('grid.l
 // Route::get('/edit', [EditController::class, 'edit'])->name('index.edit');
 
 Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
+Route::post('/profile/details', [ProfileController::class, 'profiledetails'])->name('profile.details');
+Route::post('/profile/change/password', [ProfileController::class, 'changepassword'])->name('change.password');
+

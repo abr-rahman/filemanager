@@ -172,14 +172,134 @@
 
                 <div class="row">
                      @foreach ($images as $image)
-                            <div class="col-lg-2 m-2 ">
+                            <div class="col-lg-2 m-2 pointer"  data-toggle="modal" data-target="#myModal-{{$image->id}}" >
                                 <div class="card-body text-center">
-
-                                  {{-- <a href=" " class="font-weight-bold text-dark"  target="_blank">{{ $image->filename }}</a> --}}
                                   <img src="{{ URL::asset("files/$image->filename") }}" alt="" class="m-2" style="width:200px; height:200px;" >
-
                                 </div>
                             </div>
+
+                            <div class="container">
+                            <div class="modal modal-fullscreen-lg" id="myModal-{{$image->id}}" role="dialog">
+                                <div class="modal-dialog" style="max-width: 90%">
+                                    <div class="modal-content">
+                                        <div class="m-3" style="height:5px">
+                                            <h6 class="modal-title ">Edit Your Description</h6>
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                aria-label="Close" style="margin-top: -27px;">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                            <div>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-md-6 ">
+                                                <div class="p-4 ">
+                                                    <img src="{{ URL::asset("files/$image->filename") }}" style="width:535px;"
+                                                        alt="no found">
+                                                </div>
+                                                <div class="d-flex justify-content-center mb-4">
+                                                    <a href="{{ route('testmultiple.edit', $image->id) }}" type="submit"
+                                                        class="btn btn-outline-secondary">Change
+                                                        Image</a>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6 edit_des">
+                                                <div class="modal-body">
+                                                    <div class="card-body p-2">
+                                                        <div class="">
+                                                            <small class="fw-bold">Uploaded On: </small>
+                                                            <span>{{ $image->created_at }}</span><br>
+
+                                                            <small class="fw-bold">Uploaded By:
+                                                            </small><span>{{ Auth::user()->name }}</span><br>
+
+                                                            <small class="fw-bold">File Name:</small>
+                                                            <span> {{ $image->filename }}</span><br>
+
+                                                            <small class="fw-bold">File Type: </small>
+                                                            <span>
+                                                                {{ substr($image->filename, -4) }}</span><br>
+
+                                                            <small class="fw-bold">File File Size:
+
+                                                                {{-- {{ $image->filename }}
+                                                                @php
+                                                                $size = File::size(public_path("files/$image->filename")) / 1024;
+                                                                $sizeFormatted = number_format($size, 2, '.');
+                                                                @endphp
+
+                                                                ( {{ $sizeFormatted }} KB) --}}
+
+                                                            </small>
+                                                            <br>
+                                                        </div>
+                                                        <hr>
+                                                    </div>
+                                                <form action="{{ route('update.image.description', $image->id) }}" method="post" enctype="multipart/form-data">
+                                                    @csrf
+                                                    <div class="md-form mb-3">
+                                                        <div class="input-group">
+                                                            <span
+                                                                class="input-group-text edit_input">Alternative
+                                                                Text</span>
+                                                            <input type="text" name="alternative" aria-label="First name" value="{{ $image->alternative }}"
+                                                                class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="md-form mb-3">
+                                                        <div class="input-group">
+                                                            <span
+                                                                class="input-group-text edit_input">Title</span>
+                                                            <input type="text" name="title" aria-label="First name" value="{{ $image->title }}"
+                                                                class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="md-form mb-3">
+                                                        <div class="input-group">
+                                                            <span
+                                                                class="input-group-text edit_input">Caption</span>
+                                                            <textarea name="caption" class="form-control" rows="2">{{ $image->caption }}</textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="md-form mb-3">
+                                                        <div class="input-group">
+                                                            <span
+                                                                class="input-group-text edit_input">Description</span>
+                                                            <textarea name="description" class="form-control" rows="2">{{ $image->description }}</textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="md-form mb-3">
+                                                        <div class="input-group">
+                                                            <span
+                                                                class="input-group-text edit_input">Image Url</span>
+                                                            <input type="text" name="url" class="form-control" value="{{ $image->url }}">
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="d-flex justify-content-center">
+                                                        <button type="submit"
+                                                            class="btn  btn-outline-dark">Description
+                                                            Update</button>
+
+                                                    </div>
+                                                </form>
+                                                        <form action="" method="post" class="float-end" style="margin-top: -58px !important;">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <a href="{{ route('testmultiple.destroy', $image->id) }}"
+                                                                type="submit"
+                                                                class="btn btn-outline-danger">Delete</a>
+                                                        </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     @endforeach
 
                 </div>

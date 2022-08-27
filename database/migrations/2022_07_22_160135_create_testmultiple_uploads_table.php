@@ -16,6 +16,11 @@ return new class extends Migration
         Schema::create('testmultiple_uploads', function (Blueprint $table) {
             $table->id();
             $table->string('filename');
+            $table->string('alternative')->nullable();
+            $table->string('title')->nullable();
+            $table->string('caption')->nullable();
+            $table->string('description')->nullable();
+            $table->string('url')->nullable();
             $table->timestamps();
         });
     }

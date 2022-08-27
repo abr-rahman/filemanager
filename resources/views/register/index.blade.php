@@ -36,7 +36,7 @@
                          <div class="row">
                             <label class="col-sm-3 col-form-label"></label>
                             <div class="col-sm-6 py-4">
-                                <a href="{{ url('/auth/login') }}" type="submit" class="btn btn-info px-3">Log In</a>
+                                <a href="{{ url('/login') }}" type="submit" class="btn btn-info px-3">Log In</a>
                             </div>
                         </div>
                     </div>

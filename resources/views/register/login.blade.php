@@ -86,7 +86,7 @@
                          <div class="row">
                             <label class="col-sm-3 col-form-label"></label>
                             <div class="col-sm-6 py-4">
-                                <a href="{{ url('/auth/register') }}" type="submit" class="btn btn-success px-3">Sign Up</a>
+                                <a href="{{ url('/register') }}" type="submit" class="btn btn-success px-3">Sign Up</a>
                             </div>
                         </div>
                     </div>

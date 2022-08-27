@@ -1,65 +1,71 @@
 @extends('layouts.dashboard_mother')
 
 @section('content')
-    <div class="user-profile-page">
-						<div class="card radius-15">
-							<div class="card-body">
-								<div class="row">
-									<div class="col-12 col-lg-7 border-right">
-										<div class="d-md-flex align-items-center">
-											<div class="mb-md-0 mb-3">
-												<img src="{{ URL::asset("new-folder/profile_photo.jpg") }}" class="rounded-circle shadow" width="130" height="130" alt="" />
-											</div>
-											<div class="ms-md-4 flex-grow-1">
-												<div class="d-flex align-items-center mb-1">
-													<h4 class="mb-0">{{ Auth::user()->name }}</h4>
-												</div>
-												<p class="mb-0 text-muted">Sr. Web Developer</p>
-												<p class="text-primary"><i class='bx bx-buildings'></i> Epic Coders</p>
-												<button type="button" class="btn btn-primary">Connect</button>
-												<button type="button" class="btn btn-outline-secondary ml-2">Resume</button>
-											</div>
-										</div>
-									</div>
-									<div class="col-12 col-lg-5">
-										<table class="table table-sm table-borderless mt-md-0 mt-3">
-											<tbody>
-												<tr>
-													<th>Availability:</th>
-													<td>Full-time</td>
-												</tr>
 
-												<tr>
-													<th>Location:</th>
-													<td>Sankt, Petersburg, Russia</td>
-												</tr>
-												<tr>
-													<th>Years experience:</th>
-													<td>6</td>
-									`			</tr>
-											</tbody>
-										</table>
-										<div class="mb-3 mb-lg-0">
-											<a href="javascript:;" class="btn btn-sm btn-link"><i class='bx bxl-github'></i></a>
-											<a href="javascript:;" class="btn btn-sm btn-link"><i class='bx bxl-twitter'></i></a>
-											<a href="javascript:;" class="btn btn-sm btn-link"><i class='bx bxl-facebook'></i></a>
-											<a href="javascript:;" class="btn btn-sm btn-link"><i class='bx bxl-linkedin'></i></a>
-											<a href="javascript:;" class="btn btn-sm btn-link"><i class='bx bxl-dribbble'></i></a>
-											<a href="javascript:;" class="btn btn-sm btn-link"><i class='bx bxl-stack-overflow'></i></a>
-										</div>
-									</div>
-								</div>
-								<!--end row-->
-								<ul class="nav nav-pills">
-									{{-- <li class="nav-item"> <a class="nav-link active" data-bs-toggle="tab" href="#Experience"><span class="p-tab-name">Experience</span><i class='bx bx-donate-blood font-24 d-sm-none'></i></a>
+    <div class="user-profile-page">
+        <div class="card radius-15">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12 col-lg-7 border-right">
+                        <div class="d-md-flex align-items-center">
+                            <div class="mb-md-0 mb-3">
+                                <img src="{{ asset('uploads/profile_photo') }}/{{ auth()->user()->profile_photo }}"
+                                    class="rounded-circle shadow" width="130" height="130" alt="" />
+                            </div>
+                            <div class="ms-md-4 flex-grow-1">
+                                <div class="d-flex align-items-center mb-1">
+                                    <h4 class="mb-0">{{ Auth::user()->name }}</h4>
+                                </div>
+                                <p class="mb-0 text-muted">Sr. Web Developer</p>
+
+
+                                {{-- <button type="button" class="btn btn-primary">Connect</button>
+                                <button type="button" class="btn btn-outline-secondary ml-2">Resume</button> --}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-5">
+                        <table class="table table-sm table-borderless mt-md-0 mt-3">
+                            <tbody>
+                                <tr>
+                                    <th>Availability:</th>
+                                    <td>Full-time</td>
+                                </tr>
+
+                                <tr>
+                                    <th>Location:</th>
+                                    <td>Sankt, Petersburg, Russia</td>
+                                </tr>
+                                <tr>
+                                    <th>Years experience:</th>
+                                    <td>6</td>
+                                    `
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="mb-3 mb-lg-0">
+                            <a href="javascript:;" class="btn btn-sm btn-link"><i class='bx bxl-github'></i></a>
+                            <a href="javascript:;" class="btn btn-sm btn-link"><i class='bx bxl-twitter'></i></a>
+                            <a href="javascript:;" class="btn btn-sm btn-link"><i class='bx bxl-facebook'></i></a>
+                            <a href="javascript:;" class="btn btn-sm btn-link"><i class='bx bxl-linkedin'></i></a>
+                            <a href="javascript:;" class="btn btn-sm btn-link"><i class='bx bxl-dribbble'></i></a>
+                            <a href="javascript:;" class="btn btn-sm btn-link"><i class='bx bxl-stack-overflow'></i></a>
+                        </div>
+                    </div>
+                </div>
+                <!--end row-->
+                <ul class="nav nav-pills">
+                    {{-- <li class="nav-item"> <a class="nav-link active" data-bs-toggle="tab" href="#Experience"><span class="p-tab-name">Experience</span><i class='bx bx-donate-blood font-24 d-sm-none'></i></a>
 									</li>
 									<li class="nav-item"> <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#Biography"><span class="p-tab-name">Biography</span><i class='bx bxs-user-rectangle font-24 d-sm-none'></i></a>
 									</li> --}}
-									<li class="nav-item"> <a class="nav-link active" data-bs-toggle="tab" href="#Edit-Profile"><span class="p-tab-name">Edit Profile</span><i class='bx bx-message-edit font-24 d-sm-none'></i></a>
-									</li>
-								</ul>
-								<div class="tab-content mt-3">
-									{{-- <div class="tab-pane fade show active" id="Experience">
+                    <li class="nav-item"> <a class="nav-link active" data-bs-toggle="tab" href="#Edit-Profile"><span
+                                class="p-tab-name">Edit Profile</span><i
+                                class='bx bx-message-edit font-24 d-sm-none'></i></a>
+                    </li>
+                </ul>
+                <div class="tab-content mt-3">
+                    {{-- <div class="tab-pane fade show active" id="Experience">
 										<div class="card shadow-none border mb-0 radius-15">
 											<div class="card-body">
 												<div class="d-sm-flex align-items-center mb-3">
@@ -190,71 +196,184 @@
 											</div>
 										</div>
 									</div> --}}
-									<div class="tab-pane fade show active" id="Edit-Profile">
-										<div class="card shadow-none border mb-0 radius-15">
-											<div class="card-body">
-												<div class="form-body">
-													<div class="row">
-														<div class="col-12 col-lg-5 border-right">
-															<form class="row g-3">
-																<div class="col-6">
-																	<label class="form-label">Name</label>
-																	<input type="text" value="Svetlana" class="form-control">
-																</div>
-                                                                <div class="col-6">
+                    <div class="tab-pane fade show active" id="Edit-Profile">
+                        <div class="card shadow-none border mb-0 radius-15">
+                            <div class="card-body">
+                                <div class="form-body">
+                                    <div class="row">
+
+                                         @if (count($errors) > 0)
+                                            <div class="alert alert-danger">
+                                            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                                            <ul>
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                            </div>
+                                            @endif
+
+                                            @if(session('success'))
+                                            <div class="alert alert-success">
+                                                {{ session('success') }}
+                                            </div>
+                                        @endif
+
+                                        @if (session('info'))
+                                            <div class="alert alert-success">{{ session('info') }}</div>
+                                        @endif
+
+                                        @error('message')
+                                            <span class="alert alert-danger">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+
+                                        @error('message')
+                                            <div class="alert alert-danger">{{ 'message' }}</div>
+                                        @enderror
+
+                                        <div class="col-12 col-lg-7 border-right">
+                                            <form class="row g-3" method="post" action="{{ route('profile.details') }}"
+                                                enctype="multipart/form-data">
+                                                @csrf
+                                                <div class="col-6">
+                                                    <label class="form-label">Name</label>
+                                                    <input name="name" type="text" value="{{ Auth::user()->name }}"
+                                                        class="form-control">
+                                                </div>
+                                                <div class="col-6">
+                                                    <label class="form-label">Email</label>
+                                                    <input name="email" type="email" value="{{ Auth::user()->email }}"
+                                                        class="form-control">
+                                                </div>
+                                                <div class="col-6">
+                                                    <label class="form-label">Phone</label>
+                                                    <input type="text" name="phone_number" class="form-control"
+                                                        value="{{ Auth::user()->phone_number }}">
+                                                </div>
+                                                <div class="col-6">
+                                                    <label class="form-label">Date of Birth</label>
+                                                    <input type="date" name="birth_day"class="form-control"
+                                                        value="{{ Auth::user()->birth_day }}">
+                                                </div>
+
+                                                <div class="col-6">
+                                                    <label class="form-label">Twitter</label>
+                                                    <input type="text" class="form-control" name="twitter"
+                                                        value="{{ Auth::user()->twitter }}">
+                                                </div>
+
+                                                <div class="col-6">
+                                                    <label class="form-label">Facebook</label>
+                                                    <input type="text" class="form-control" name="facebook"
+                                                        value="{{ Auth::user()->facebook }}">
+                                                </div>
+                                                <div class="col-12">
+                                                    <label class="form-label">Address</label>
+                                                    <input type="text" name="address" class="form-control"
+                                                        value="{{ Auth::user()->address }}">
+                                                </div>
+                                                <div class="col-12">
+                                                    <button type="submit" class="btn btn-success">Submit</button>
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                        <div class="col-12 col-lg-5" style="background-color: #aaaaaa33!important;">
+                                            <form class="row g-3" action="{{ route('change.password') }}" method="post"
+                                                enctype="multipart/form-data">
+                                                @csrf
+
+                                                {{-- <div class="col-6">
 																	<label class="form-label">Profile</label>
 																    <input type="file" value="" class="form-control">
-																</div>
-																<div class="col-6">
-																	<label class="form-label">Old Password</label>
-																    <input type="password" value="634560000" class="form-control">
-																</div>
-																<div class="col-6">
-																	<label class="form-label">Password</label>
-																    <input type="password" value="1234560000" class="form-control">
-																</div>
-																<div class="col-12">
-																	<label class="form-label">Email</label>
-																    <input type="text" value="svetlana1997@example.com" class="form-control">
-																</div>
+																</div> --}}
+                                                <div class="col-12">
+                                                    <label class="form-label">Current Password</label>
+                                                    <input type="password" value="" name="current_password" placeholder="Current Password"
+                                                        class="form-control">
+                                                    @error('current_password')
+                                                        <span class="invalid-feedback bg-danger" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
 
-															</form>
-														</div>
-														<div class="col-12 col-lg-7">
-															<form class="row g-3">
-																<div class="col-6">
-																	<label class="form-label">Phone</label>
-																    <input type="text" value="99-10-XXX-XXX" class="form-control">
-																</div>
-																<div class="col-6">
-                                                                    <label class="form-label">Date of Birth</label>
-                                                                    <input type="date" class="form-control">
-																</div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <label class="form-label">Password</label>
+                                                    <input type="password" name="password" class="form-control" placeholder="New Password">
+                                                    @error('password')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                                <div class="col-12">
+                                                    <label class="form-label">Confirm Password</label>
+                                                    <input type="password" name="password_confirmation" placeholder="Confirm Password"
+                                                        class="form-control">
+                                                </div>
+                                                <div class="col-5">
+                                                    <button type="submit" class="btn btn-outline-secondary btn-sm">change password</button>
+                                                </div>
 
-																<div class="col-6">
-																	<label class="form-label">Twitter</label>
-																	<input type="text" class="form-control" value="https://twitter.com/anyukova">
-																</div>
-
-																<div class="col-6">
-																	<label class="form-label">Facebook</label>
-																	<input type="text" class="form-control" value="https://www.facebook.com/anyukova">
-																</div>
-                                                                <div class="col-12">
-																	<label class="form-label">Address</label>
-																    <input type="text" value="116-B, Cutela Colony, Sydney, Australia" class="form-control">
-																</div>
-															</form>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
 @endsection
+   <script>
+            @if(Session::has('success'))
+            toastr.options =
+            {
+                "closeButton" : true,
+                "progressBar" : true
+            }
+                    toastr.success("{{ session('success') }}");
+            @endif
+            @if(Session::has('message'))
+            toastr.options =
+            {
+                "closeButton" : true,
+                "progressBar" : true
+            }
+                    toastr.success("{{ session('message') }}");
+            @endif
+
+            @if(Session::has('error'))
+            toastr.options =
+            {
+                "closeButton" : true,
+                "progressBar" : true
+            }
+                    toastr.error("{{ session('error') }}");
+            @endif
+
+            @if(Session::has('info'))
+            toastr.options =
+            {
+                "closeButton" : true,
+                "progressBar" : true
+            }
+                    toastr.info("{{ session('info') }}");
+            @endif
+
+            @if(Session::has('warning'))
+            toastr.options =
+            {
+                "closeButton" : true,
+                "progressBar" : true
+            }
+                    toastr.warning("{{ session('warning') }}");
+            @endif
+        </script>

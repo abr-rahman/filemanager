@@ -5,6 +5,7 @@
     <div class="secure">Upload form</div>
 
     <form action="{{ route('apply.multiple_upload') }}" method="post" enctype="multipart/form-data">
+        @csrf
         <input type="file" name="filename[]" multiple class="form-control">
         <button type="submit">Add</button>
     </form>
