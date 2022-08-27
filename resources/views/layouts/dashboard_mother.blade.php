@@ -68,7 +68,7 @@
                                         <p class="user-name mb-0">{{ Auth::user()->name }}</p>
                                         <p class="designattion mb-0">Available</p>
                                     </div>
-                                    <img src="{{ URL::asset('uploads/profile_photo/profile_photo.jpg') }}" class="user-img"
+                                    <img src="{{ asset('uploads/profile_photo') }}/{{ auth()->user()->profile_photo }}" class="user-img"
                                         alt="">
                                 </div>
                             </a>
@@ -81,8 +81,8 @@
 
                                 {{-- profile modal end --}}
                                 <div class="dropdown-divider mb-0"></div>
-                                @guest
-                                    @if (Route::has('login'))
+                        @guest
+                            @if (Route::has('login'))
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
