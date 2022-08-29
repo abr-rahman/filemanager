@@ -77,7 +77,7 @@
                         <h6 class="text-primary mb-0 text-center">{{ $imagesCount }} <br> <small>Photo</small></h6>
                     </div>
 
-                    <div class="d-flex align-items-center mt-3">
+                    <div class="d-flex align-items-center">
                         <div class="fm-file-box bg-light-danger text-success"><i class='bx bx-music'></i>
                         </div>
                         <div class="flex-grow-1 ms-2">
@@ -88,7 +88,7 @@
                         </div>
                         <h6 class="text-primary mb-0 text-center">{{ $audiosCount }} <br> <small>Audio</small></h6>
                     </div>
-                    <div class="d-flex align-items-center mt-3">
+                    <div class="d-flex align-items-center">
                         <div class="fm-file-box bg-light-danger text-danger"><i class='bx bx-video'></i>
                         </div>
                         <div class="flex-grow-1 ms-2">
@@ -100,7 +100,7 @@
                         <h6 class="text-primary mb-0 text-center">{{ $videosCount }} <br> <small>Video</small></h6>
                     </div>
 
-                    <div class="d-flex align-items-center mt-3">
+                    <div class="d-flex align-items-center">
                         <div class="fm-file-box bg-light-success text-success"><i class='bx bxs-file-doc'></i>
                         </div>
                         <div class="flex-grow-1 ms-2">
@@ -201,7 +201,7 @@
 
                                             </div>
                                         </td>
-
+                                        <!-- The Modal end -->
                                         <div class="container">
                                             <div class="modal modal-fullscreen-lg" id="myModal-{{$image->id}}" role="dialog">
                                                 <div class="modal-dialog" style="max-width: 90%">
@@ -248,13 +248,7 @@
 
                                                                             <small class="fw-bold">File File Size:
 
-                                                                                {{-- {{ $image->filename }}
-                                                                                @php
-                                                                                $size = File::size(public_path("files/$image->filename")) / 1024;
-                                                                                $sizeFormatted = number_format($size, 2, '.');
-                                                                                @endphp
 
-                                                                                ( {{ $sizeFormatted }} KB) --}}
 
                                                                             </small>
                                                                             <br>
@@ -268,7 +262,15 @@
                                                                             <span
                                                                                 class="input-group-text edit_input">Alternative
                                                                                 Text</span>
-                                                                            <input type="text" name="alternative" aria-label="First name" value="{{ $image->alternative }}"
+                                                                            <input type="text" name="alternative"  value="{{ $image->alternative }}"
+                                                                                class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="md-form mb-3">
+                                                                        <div class="input-group">
+                                                                            <span
+                                                                                class="input-group-text edit_input">Name</span>
+                                                                            <input type="text" name="filename"  value="{{ $image->filename }} " required
                                                                                 class="form-control">
                                                                         </div>
                                                                     </div>
@@ -276,7 +278,7 @@
                                                                         <div class="input-group">
                                                                             <span
                                                                                 class="input-group-text edit_input">Title</span>
-                                                                            <input type="text" name="title" aria-label="First name" value="{{ $image->title }}"
+                                                                            <input type="text" name="title"  value="{{ $image->title }}"
                                                                                 class="form-control">
                                                                         </div>
                                                                     </div>
@@ -298,7 +300,7 @@
                                                                         <div class="input-group">
                                                                             <span
                                                                                 class="input-group-text edit_input">Image Url</span>
-                                                                            <input type="text" name="url" class="form-control" value="{{ $image->url }}">
+                                                                            <input type="text" name="url" class="form-control" value="{{ URL::asset("files/$image->filename") }}" required>
                                                                         </div>
                                                                     </div>
 
@@ -324,13 +326,12 @@
                                                 </div>
                                             </div>
                                         </div>
-
+                                        <!-- The Modal end -->
                                     </tr>
                                 @endforeach
+
                             </tbody>
                         </table>
-                        {{-- <button type="button" class="btn btn-primary" ></button> --}}
-                        <!-- The Modal -->
                     </div>
                 </div>
             </div>

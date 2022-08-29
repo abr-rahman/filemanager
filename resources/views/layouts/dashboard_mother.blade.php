@@ -29,7 +29,7 @@
             <!--navigation-->
             <ul class="metismenu" id="menu">
                 <li>
-                    <a href="{{ url('home') }}">
+                    <a href="{{ url('/home') }}">
                         <div class="parent-icon icon-color-5"><i class="bx bx-home-alt"></i></div>
                         <div class="menu-title">Dashboard</div>
                     </a>
@@ -40,7 +40,7 @@
                         <div class="menu-title">File Manager</div>
                     </a>
                     <ul>
-                        <li> <a href="{{ url('home') }}"><i class="bx bx-right-arrow-alt"></i>All File</a></li>
+                        <li> <a href="{{ url('/home') }}"><i class="bx bx-right-arrow-alt"></i>All File</a></li>
                         <li> <a href="{{ route('testmultiple.create') }}"><i class="bx bx-right-arrow-alt"></i>Upload
                                 File</a></li>
                     </ul>
@@ -60,7 +60,7 @@
                     </div>
                 </div>
                 <div class="right-topbar ms-auto">
-                    <ul class="navbar-nav">
+                    <ul class="navbar-nav m-0">
                         <li class="nav-item dropdown dropdown-user-profile">
                             <a class="nav-link dropdown-toggle-nocaret" data-bs-toggle="dropdown">
                                 <div class="d-flex user-box align-items-center">

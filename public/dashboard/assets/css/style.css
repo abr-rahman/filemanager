@@ -10,3 +10,21 @@
 .pointer {
     cursor: pointer;
 }
+.image-form{
+    margin-top: 8%;
+    margin-left: 23% !important;
+    width: 52%;
+}
+
+.img-submit{
+    left: 45%;
+    right: 45%;
+    position: absolute;
+}
+
+.ps-background{
+    background-color: #aaaaaa33!important;
+}
+.profile-photo-upd{
+    margin: -35px 12px 10px 4px !important;
+}

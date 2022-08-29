@@ -17,7 +17,6 @@ class TestmultipleUploadController extends Controller
     {
         $testmultiples = TestmultipleUpload::all();
 
-
         $audios = [];
         $videos = [];
         $images = [];
@@ -78,7 +77,6 @@ class TestmultipleUploadController extends Controller
         }
 
         return back()->with('success', 'Data added Successfully');
-
     }
 
     public function edit(TestmultipleUpload $testmultipleUpload, $id)
@@ -120,6 +118,7 @@ class TestmultipleUploadController extends Controller
         $updateDes->caption = $request->caption;
         $updateDes->description = $request->description;
         $updateDes->url = $request->url;
+        $updateDes->filename = $request->filename;
 
         $updateDes->update();
 

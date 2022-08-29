@@ -1,4 +1,3 @@
-
 {{-- <html lang="en">
     <head>
       <title>Laravel Multiple File Upload Example</title>
@@ -6,12 +5,11 @@
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     </head>
     <body>
-      <div class="container">
- --}}
+      <div class="container"> --}}
 
-        {{-- kidfhasdkfasdkfa --}}
+{{-- kidfhasdkfasdkfa --}}
 
-        @extends('layouts.dashboard_mother')
+{{-- @extends('layouts.dashboard_mother')
         <style>
              @import url(https://fonts.googleapis.com/css?family=Open+Sans:700,300);
 
@@ -102,7 +100,6 @@ h1 {
         </style>
         @section('content')
 
-            <!-- wrapper -->
             <div class="page-content">
                 <div class="card radius-15">
                     @if (count($errors) > 0)
@@ -116,7 +113,7 @@ h1 {
                     </div>
                     @endif
 
-                      @if(session('success'))
+                      @if (session('success'))
                       <div class="alert alert-success">
                         {{ session('success') }}
                       </div>
@@ -136,10 +133,11 @@ h1 {
                     </div>
                 </div>
             </div>
+
         @endsection
 
         <script>
-            @if(Session::has('message'))
+            @if (Session::has('message'))
             toastr.options =
             {
                 "closeButton" : true,
@@ -148,7 +146,7 @@ h1 {
                     toastr.success("{{ session('message') }}");
             @endif
 
-            @if(Session::has('error'))
+            @if (Session::has('error'))
             toastr.options =
             {
                 "closeButton" : true,
@@ -157,7 +155,7 @@ h1 {
                     toastr.error("{{ session('error') }}");
             @endif
 
-            @if(Session::has('info'))
+            @if (Session::has('info'))
             toastr.options =
             {
                 "closeButton" : true,
@@ -166,7 +164,7 @@ h1 {
                     toastr.info("{{ session('info') }}");
             @endif
 
-            @if(Session::has('warning'))
+            @if (Session::has('warning'))
             toastr.options =
             {
                 "closeButton" : true,
@@ -174,99 +172,65 @@ h1 {
             }
                     toastr.warning("{{ session('warning') }}");
             @endif
-        </script>
+        </script> --}}
 
 
-        {{-- dfughsdfkjghdkjhijuadskfiu --}}
-{{--
 
+@extends('layouts.dashboard_mother')
+@section('content')
+    <div class="card" style="height:500px;">
+        <div class="card-body image-form">
+            <form method="post" action="{{ route('testmultiple.store') }}" enctype="multipart/form-data">
+                @csrf
+                <input type="file" class="dropify" name="filename" data-default-file="url_of_your_file"/>
+                <button type="submit" class="img-submit btn btn-outline-dark m-2">submit</button>
+                {{-- <input id="fancy-file-upload" type="file" name="filename" multiple> --}}
+            </form>
+        </div>
+    </div>
+@endsection
 
-        <h3 class="jumbotron">Laravel Multiple File Upload</h3>
-    <form method="post" action="{{  route('testmultiple.store') }}" enctype="multipart/form-data">
-      {{csrf_field()}}
-
-            <div class="input-group control-group increment" >
-              <input type="file" name="filename" class="form-control">
-              <div class="input-group-btn">
-                <button class="btn btn-success" type="button"><a href="{{ route('testmultiple.create') }}">Add</a></button>
-              </div>
-            </div>
-
-
-            <button type="submit" class="btn btn-primary" style="margin-top:10px">Submit</button>
-
-      </form>
-
-      <table class="table">
-        <thead>
-            <tr>
-                <th>Image</th>
-                @foreach ($images as $image)
-                    <td>
-                        <img src="{{ URL::asset("files/$image->filename")}}" width="70" alt="">
-                    </td>
-                @endforeach
-            </tr>
-            <tr>
-                <th>Video</th>
-                @foreach ($videos as $video)
-                    <td>
-                        <video width="120" height="140" controls><source src="{{ URL::asset("files/$video->filename")}}"></video>
-                    </td>
-                @endforeach
-            </tr>
-            <tr>
-                <th>Odio</th>
-                @foreach ($audios as $audio)
-                    <td>
-                        <audio controls><source src="{{ URL::asset("files/$audio->filename") }}"></audio>
-                    </td>
-                @endforeach
-            </tr>
-            <tr>
-                <th>Document</th>
-                @foreach ($documents as $document)
-                    <td>
-                        <p controls><source src="{{ URL::asset("files/$document->filename") }}"></p>
-                    </td>
-                @endforeach
-            </tr>
-        </thead>
-      </table>
-
-
-    <script type="text/javascript">
-
-
-        // $(document).ready(function() {
-
-        //   $(".btn-success").click(function(){
-        //       var html = $(".clone").html();
-        //       $(".increment").after(html);
-        //   });
-
-        //   $("body").on("click",".btn-danger",function(){
-        //       $(this).parents(".control-group").remove();
-        //   });
-
-        // });
-
-    </script>
-
+@section('footerScript')
     <script>
-		$('#fancy-file-upload').FancyFileUpload({
-			params: {
-				action: 'fileuploader'
-			},
-			maxfilesize: 1000000
-		});
-	</script>
-	<script>
-		$(document).ready(function () {
-			$('#image-uploadify').imageuploadify();
-		})
-	</script>
-	<!-- App JS -->
-	<script src="{{asset('dashboard')}}/assets/js/app.js"></script>
-    </body>
-    </html> --}}
+        $(document).ready(function() {
+            // Basic
+            $('.dropify').dropify();
+
+            // Translated
+            $('.dropify-fr').dropify({
+                messages: {
+                    default: 'Glissez-déposez un fichier ici ou cliquez',
+                    replace: 'Glissez-déposez un fichier ou cliquez pour remplacer',
+                    remove: 'Supprimer',
+                    error: 'Désolé, le fichier trop volumineux'
+                }
+            });
+
+            // Used events
+            var drEvent = $('#input-file-events').dropify();
+
+            drEvent.on('dropify.beforeClear', function(event, element) {
+                return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
+            });
+
+            drEvent.on('dropify.afterClear', function(event, element) {
+                alert('File deleted');
+            });
+
+            drEvent.on('dropify.errors', function(event, element) {
+                console.log('Has Errors');
+            });
+
+            var drDestroy = $('#input-file-to-destroy').dropify();
+            drDestroy = drDestroy.data('dropify')
+            $('#toggleDropify').on('click', function(e) {
+                e.preventDefault();
+                if (drDestroy.isDropified()) {
+                    drDestroy.destroy();
+                } else {
+                    drDestroy.init();
+                }
+            })
+        });
+    </script>
+@endsection

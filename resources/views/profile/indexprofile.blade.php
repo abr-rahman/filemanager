@@ -17,11 +17,8 @@
                                     <h4 class="mb-0">{{ Auth::user()->name }}</h4>
                                 </div>
                                 <p class="mb-0 text-muted">Sr. Web Developer</p>
-
-
-                                {{-- <button type="button" class="btn btn-primary">Connect</button>
-                                <button type="button" class="btn btn-outline-secondary ml-2">Resume</button> --}}
                             </div>
+
                         </div>
                     </div>
                     <div class="col-12 col-lg-5">
@@ -52,10 +49,23 @@
                             <a href="javascript:;" class="btn btn-sm btn-link"><i class='bx bxl-stack-overflow'></i></a>
                         </div>
                     </div>
+
+                    <form action="" method="post" enctype="multipart/form-data" class="profile-photo-upd" style="margin: -35px 12px 10px 4px !important;">
+                        @csrf
+                        <div class="row">
+                            <div class="col-3">
+                                <input type="file" class="form-control" name="filename" placeholder="Add File">
+                            </div>
+                            <div class="col-2">
+                                <button type="submit" class="btn btn-outline-dark">Update</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
                 <!--end row-->
+
                 <ul class="nav nav-pills">
-                    {{-- <li class="nav-item"> <a class="nav-link active" data-bs-toggle="tab" href="#Experience"><span class="p-tab-name">Experience</span><i class='bx bx-donate-blood font-24 d-sm-none'></i></a>
+                                    {{-- <li class="nav-item"> <a class="nav-link active" data-bs-toggle="tab" href="#Experience"><span class="p-tab-name">Experience</span><i class='bx bx-donate-blood font-24 d-sm-none'></i></a>
 									</li>
 									<li class="nav-item"> <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#Biography"><span class="p-tab-name">Biography</span><i class='bx bxs-user-rectangle font-24 d-sm-none'></i></a>
 									</li> --}}
@@ -219,19 +229,6 @@
                                             </div>
                                         @endif
 
-                                        @if (session('info'))
-                                            <div class="alert alert-success">{{ session('info') }}</div>
-                                        @endif
-
-                                        @error('message')
-                                            <span class="alert alert-danger">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-
-                                        @error('message')
-                                            <div class="alert alert-danger">{{ 'message' }}</div>
-                                        @enderror
 
                                         <div class="col-12 col-lg-7 border-right">
                                             <form class="row g-3" method="post" action="{{ route('profile.details') }}"
@@ -280,7 +277,7 @@
                                             </form>
                                         </div>
 
-                                        <div class="col-12 col-lg-5" style="background-color: #aaaaaa33!important;">
+                                        <div class="col-12 col-lg-5 ps-background" >
                                             <form class="row g-3" action="{{ route('change.password') }}" method="post"
                                                 enctype="multipart/form-data">
                                                 @csrf
