@@ -76,7 +76,7 @@ class TestmultipleUploadController extends Controller
             $file->save();
         }
 
-        return back()->with('success', 'Data added Successfully');
+        return redirect('/home')->with('success', 'Data added Successfully');
     }
 
     public function edit(TestmultipleUpload $testmultipleUpload, $id)
