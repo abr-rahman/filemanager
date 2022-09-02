@@ -15,35 +15,38 @@ use Symfony\Component\Console\Input\Input;
 
 class RegisterController extends Controller
 {
-    public function authlogin(){
+    public function authlogin()
+    {
         return view('register.login');
     }
 
-    public function loginstore(Request $request){
-       $request->validate([
-        'email' => 'required',
-        'password' => 'required'
-       ]);
+    public function loginstore(Request $request)
+    {
+        $request->validate([
+            'email' => 'required',
+            'password' => 'required'
+        ]);
 
-        // Login code
         if (Auth::attempt($request->only('email', 'password'))) {
             return redirect('home');
         }
-        return redirect('login')->withErrors('you are wrong');
+        return redirect()->route('auth.login')->withErrors('Login failed. Try again with valid credentials.');
     }
-    public function authlogout(Request $request){
+    public function authlogout(Request $request)
+    {
 
         $request->session()->flush();
         Auth::logout();
-        return redirect('auth/login');
-
+        return redirect()->route('auth.login');
     }
 
-    public function register(){
+    public function register()
+    {
         return view('register.index');
     }
 
-    public function registerstore(Request $request){
+    public function registerstore(Request $request)
+    {
 
         $request->validate([
             'name'      => 'required',
@@ -61,10 +64,9 @@ class RegisterController extends Controller
 
         // login user here
 
-        if(Auth::attempt($request->only('email', 'password'))){
+        if (Auth::attempt($request->only('email', 'password'))) {
             return redirect('home');
         }
         return redirect('auth/register');
     }
-
 }

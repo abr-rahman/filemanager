@@ -46,6 +46,22 @@
                     </ul>
                 </li>
             </ul>
+
+            {{-- {{
+                Menu::new()
+                    ->add(Menu::new()
+                        ->link('/introduction', 'Introduction')
+                        ->link('/requirements', 'Requirements')
+                        ->link('/installation-setup', 'Installation and Setup')
+                    )
+                    ->add(Menu::new()
+                        ->prepend('<h2>Basic Usage</h2>')
+                        ->prefixLinks('/basic-usage')
+                        ->link('/your-first-menu', 'Your First Menu')
+                        ->link('/working-with-items', 'Working With Items')
+                        ->link('/adding-sub-menus', 'Adding Sub Menus')
+                    );
+            }} --}}
             <!--end navigation-->
         </div>
         <!--end sidebar-wrapper-->
@@ -84,7 +100,7 @@
                         @guest
                             @if (Route::has('login'))
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('auth.login') }}">{{ __('Login') }}</a>
                             </li>
                             @endif
 
@@ -117,7 +133,7 @@
         <!--page-content-wrapper-->
         <div class="page-content-wrapper">
             <div class="page-content" style="padding: 0rem 0rem 0rem 1rem;">
-
+                @include('layouts._messages')
                 @yield('content')
 
             </div>

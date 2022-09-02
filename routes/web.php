@@ -3,8 +3,8 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EditController;
-use App\Http\Controllers\FolderController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\FolderController;
 use App\Http\Controllers\LayeoutController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
@@ -26,9 +26,7 @@ Route::get('/', function () {
 });
 
 
-Auth::routes([
-    'verify' => true
-]);
+Auth::routes();
 
 // Route::get('home', [HomeController::class, 'index']);
 
@@ -40,10 +38,11 @@ Route::get('/login', [RegisterController::class, 'authlogin'])->name('auth.login
 
 Route::group(['middleware' => 'auth'], function(){
 
-    Route::POST('/auth/logout', [RegisterController::class, 'authlogout'])->name('auth.logout');
+    Route::post('/auth/logout', [RegisterController::class, 'authlogout'])->name('auth.logout');
     Route::get('/home', [TestmultipleUploadController::class, 'index']);
 
 });
+
 
 Route::get('testmultiple/create', [TestmultipleUploadController::class, 'create'])->name('testmultiple.create');
 Route::post('testmultiple/store', [TestmultipleUploadController::class, 'store'])->name('testmultiple.store');

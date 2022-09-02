@@ -186,6 +186,7 @@
                                 </tr>
                             </thead>
                             <tbody>
+
                                 @foreach ($images as $image)
                                     <tr>
                                         <td data-toggle="modal" data-target="#myModal-{{$image->id}}" class="pointer">
@@ -247,7 +248,6 @@
                                                                                 {{ substr($image->filename, -4) }}</span><br>
 
                                                                             <small class="fw-bold">File File Size:
-
 
 
                                                                             </small>

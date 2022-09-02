@@ -15,7 +15,7 @@
 </head>
 
 <body>
-
+    @include('layouts._messages')
     <section class="h-100 gradient-form">
         <div class="h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
@@ -55,7 +55,7 @@
                                             <div class="col-sm-12">
                                                 <input type="email"
                                                     class="form-control @error('email') is-invalid @enderror"
-                                                    name="email" value="{{ old('email') }}" required
+                                                    name="email" value="user@gmail.com" required
                                                     placeholder="Email Address">
                                                 @error('email')
                                                     <span class="invalid-feedback" role="alert">
@@ -70,7 +70,7 @@
                                                 <input type="password"
                                                     class="form-control  @error('password') is-invalid @enderror"
                                                     name="password" id="inputChoosePassword2"
-                                                    placeholder="Choose Password" required>
+                                                    placeholder="Choose Password" required value="password">
                                             </div>
                                         </div>
                                         {{-- <div class="row mb-3">

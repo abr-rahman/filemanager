@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\TestmultipleUpload;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\File;
 
 class TestmultipleUploadController extends Controller
@@ -76,12 +77,12 @@ class TestmultipleUploadController extends Controller
             $file->save();
         }
 
-        return redirect('/home')->with('success', 'Data added Successfully');
+        return redirect('/home')->with('success', 'File created successfully');
     }
 
     public function edit(TestmultipleUpload $testmultipleUpload, $id)
     {
-    $testmultiples = TestmultipleUpload::find($id);
+        $testmultiples = TestmultipleUpload::find($id);
         return view('Testmultiple.edit', compact('testmultiples'));
     }
 
@@ -127,12 +128,11 @@ class TestmultipleUploadController extends Controller
 
     public function destroy($id)
     {
-
         $delete = TestmultipleUpload::find($id);
         $oldFile = public_path('files/') . $delete->filename;
-            unlink($oldFile);
+        unlink($oldFile);
         $delete->delete();
-        return back();
+        return redirect('home')->with('success', 'Deleted successfully!');
     }
     public function show()
     {
@@ -153,6 +153,4 @@ class TestmultipleUploadController extends Controller
         // return $onlyFolders;
         return view('Testmultiple.index', compact('onlyFolders'));
     }
-
-
 }

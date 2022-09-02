@@ -182,21 +182,23 @@ h1 {
         <div class="card-body image-form">
             <form method="post" action="{{ route('testmultiple.store') }}" enctype="multipart/form-data">
                 @csrf
+
                 <input type="file" class="dropify" name="filename" data-default-file="url_of_your_file"/>
                 <button type="submit" class="img-submit btn btn-outline-dark m-2">submit</button>
-                {{-- <input id="fancy-file-upload" type="file" name="filename" multiple> --}}
+
             </form>
         </div>
     </div>
 @endsection
 
 @section('footerScript')
+
     <script>
         $(document).ready(function() {
-            // Basic
+
             $('.dropify').dropify();
 
-            // Translated
+
             $('.dropify-fr').dropify({
                 messages: {
                     default: 'Glissez-déposez un fichier ici ou cliquez',
@@ -206,7 +208,7 @@ h1 {
                 }
             });
 
-            // Used events
+
             var drEvent = $('#input-file-events').dropify();
 
             drEvent.on('dropify.beforeClear', function(event, element) {
@@ -233,4 +235,8 @@ h1 {
             })
         });
     </script>
+
+    {{-- end doropzone --}}
+
+
 @endsection
